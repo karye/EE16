@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <p><?php echo "Första php-koden!"; ?></p>
+    <h1><?php echo "Första php-koden!"; ?></h1>
     <p>Klockan är <?php echo date("H:i:s"); ?></p>
 </body>
 </html>
