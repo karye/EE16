@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-<?php include "header.inc" ?>
+<?php include "header.inc"?>
         <main>
             <p>Välkommen till min för webbapp!</p>
         </main>
