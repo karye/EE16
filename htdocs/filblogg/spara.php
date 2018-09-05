@@ -5,28 +5,28 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Skriva inlägg</title>
     <link rel="stylesheet" href="./css/flatly.epic.css">
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1>Mina enkla blogg</h1>
-    <nav>
-        <ul>
-            <li><a href="index.php">Hemsida</a></li>
-            <li><a href="skriva.php">Skriv inlägg</a></li>
-            <li><a href="lasa.php">Läs inlägg</a></li>
-        </ul>
-    </nav>
-    <?php
-/* Ta emot text från formuläret och
-spara ned i en textfil. */
+<?php include "header.inc" ?>
+        <main>
+        <?php
+        /* Ta emot text från formuläret och spara ned i en textfil. */
 
-$texten = $_POST["inlagg"];
+        $texten = $_POST["inlagg"];
+        $tidpunkt = date('l j F Y h:i:s');
 
-$handtag = fopen("inlaggen.txt", 'a');
-fwrite($handtag, $texten . "\n");
+        $handtag = fopen("inlaggen.txt", 'a');
+        fwrite($handtag, "<p>" . $tidpunkt . "<br>" . $texten . "</p>\n");
 
-echo "<p>Inlägget har sparats!</p>";
+        echo "<p>Inlägget har sparats!</p>";
 
-fclose($handtag);
-?>
+        fclose($handtag);
+        ?>
+        </main>
+        <footer>
+            Karim Ryde 2018
+        </footer>
+    </div>
 </body>
 </html>

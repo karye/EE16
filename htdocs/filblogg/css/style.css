@@ -1,0 +1,11 @@
+.kontainer {
+    width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+}
+
+main p {
+    background: #b1b1b1;
+    padding: 20px;
+    border-radius: 5px;
+}
