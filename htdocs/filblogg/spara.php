@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="sv">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,10 +8,11 @@
     <link rel="stylesheet" href="./css/flatly.epic.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-<?php include "header.inc"?>
-        <main>
-<?php
+    <?php include "header.inc"?>
+    <main>
+        <?php
 /* Ta emot text från formuläret och spara ned i en textfil. */
 
 $texten = $_POST["inlagg"];
@@ -23,10 +25,11 @@ echo "<p>Inlägget har sparats!</p>";
 
 fclose($handtag);
 ?>
-        </main>
-        <footer>
-            Karim Ryde 2018
-        </footer>
+    </main>
+    <footer>
+        Karim Ryde 2018
+    </footer>
     </div>
 </body>
+
 </html>

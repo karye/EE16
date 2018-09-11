@@ -8,11 +8,12 @@
     <link rel="stylesheet" href="./css/flatly.epic.css">
     <link rel="stylesheet" href="./css/style.css">
 </head>
+
 <body>
-<?php include "header.inc"?>
-        <main>
-<?php
-/* Öppna textfilen och  läsa innehållet och skriv ut det. */
+    <?php include "header.inc"?>
+    <main>
+        <?php
+/* Öppna textfilen och läsa innehållet och skriv ut det. */
 
 $allaRader = file("inlaggen.txt");
 
@@ -20,10 +21,10 @@ foreach ($allaRader as $rad) {
     echo $rad . "<br>";
 }
 ?>
-        </main>
-        <footer>
-            Karim Ryde 2018
-        </footer>
+    </main>
+    <footer>
+        Karim Ryde 2018
+    </footer>
     </div>
 </body>
 
