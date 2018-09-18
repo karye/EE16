@@ -12,19 +12,20 @@
 <?php
 
 /* Ta emot data */
-$anamn = $_POST["anamn"];
-$losen = $_POST["losen"];
+$tal1 = $_POST["tal1"];
+$tal2 = $_POST["tal2"];
 
 /* Kontrollera användarnamn och lösenord */
-if ( $anamn == 'karim' && $losen == '123' ) {
-    echo "<p>$anamn, du är inloggad!</p>";
+if ( $tal1 < 'tal2' ) {
+    for ($i = $tal1 + 1; $i < $tal2; $i++) { 
+        echo "$i ";
+    }
 } else {
 
     /* Hoppa tillbaka till inloggningsrute */
-    header('Location: upg_3_2.php?fel=1');
+    header('Location: upg_3_3.php?fel=1');
     die();
 }
-
 ?>
 </body>
 

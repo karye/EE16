@@ -12,18 +12,17 @@
 if (isset($_GET['fel'])) {
     $fel = $_GET['fel'];
     if ($fel == 1) {
-        echo "<p>Fel användarnamn eller lösenord. Vg försök igen!</p>";
+        echo "<p>Tal 1 skall vara mindre än tal 2. Vg försök igen!</p>";
     }
 }
 
 ?>
-    <p>Var vänlig logga in!</p>
-    <form action="upg_3_2b.php" method="post">
-        <label for="">Användarnamn</label>
-        <input type="text" name="anamn"><br>
-        <label for="">Lösenord</label>
-        <input type="password" name="losen"><br>
-        <button>Logga in</button>
+    <form action="upg_3_3b.php" method="post">
+        <label for="">Tal 1</label>
+        <input type="text" name="tal1"><br>
+        <label for="">Tal 2</label>
+        <input type="password" name="tal2"><br>
+        <button>Skriv ut</button>
     </form>
 </body>
 </html>
