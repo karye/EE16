@@ -16,28 +16,12 @@
     $nordet = $_POST["nordet"];
 
     /* Läs in webbsidan */
-    $gamlaSidan = file_get_contents($url);
-    $nyaSidan = "";
-    $antal = -1;
-    $start = 0;
-    $slut = 1;
+    $gamlaSidan = file_get_contents($url); 
 
     /* Fritextsökning */
-    while ($slut != false) {
-        /* Hitta position av ordet i texten */
-        $slut = stripos($gamlaSidan, $sordet, $start + 1);
-
-        /* Plocka ut textdelen framför hittade ordet */
-        $nyaSidan = $nyaSidan . substr($gamlaSidan, $start, $slut ) . $nordet;
-        $start = $slut + strlen($sordet);
-
-        $antal++;
-    }
+    $nyaSidan = str_replace($sordet, $nordet, $gamlaSidan);
 
     file_put_contents("test.html", $nyaSidan);
-
-    /* Skriv ut resultat */
-    echo "<p>Vi har hittat <strong>$sordet</strong> $antal gånger i webbsidan.</p>";
     ?>
 </body>
 
