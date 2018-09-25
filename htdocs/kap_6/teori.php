@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php
+    <?php
+    
 $address = "  Craafords väg 12  ";
 $trimAddress = trim($address);
 echo "<p>.$address.$trimAddress.</p>";
@@ -29,7 +30,6 @@ $epost = "hel@google.se";
 if (strstr($epost, '@')) {
     echo "<p>Innehåller @</p>";
 }
-
 
 ?>
 </body>
