@@ -8,19 +8,25 @@
 </head>
 <body>
     <?php
-    /* Ange sökväg till katalogen */
-    $sokvag = 'C:\Users\karim.ryde\github\EE17\bildgalleri\bilder';
+/* Ange sökväg till katalogen */
+$sokvag = './bilder';
 
-    /* Skanna katalogen */
-    $filer = scandir($sokvag);
+/* Skanna katalogen */
+$filer = scandir($sokvag);
 
-    /* Skriv ut alla filer som hittades */
-    echo "<h3>Skriv ut alla filer som hittades</h3>";
-    foreach ($filer as $fil) {
-        if ($fil != '.' && $fil != '..') {
-            echo "<p>$fil</p>";
-        }
+echo "<div class=\"kontainer\">\n";
+echo "<h1>Bildgalleri</h1>\n";
+
+foreach ($filer as $fil) {
+    if ($fil != '.' && $fil != '..') {
+        echo "<div class=\"ros\">\n";
+        echo "<img class=\"ram vanster\" src=\"./bilder/$fil\" alt=\"Bild från unsplash.com\">\n";
+        echo "<p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>\n";
+        echo "<hr>\n";
+        echo "</div>\n";
     }
-    ?>
+}
+echo "</div>\n";
+?>
 </body>
 </html>
