@@ -1,3 +1,12 @@
+<?php
+/*
+* Läser innehållet i en mapp och skapar ett bildgalleri.
+* PHP version 7
+* @category   Bildgalleri
+* @author     Karim Ryde <karye.webb@gmail.com>
+* @license    PHP CC
+*/
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
