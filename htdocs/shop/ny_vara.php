@@ -1,9 +1,10 @@
 <?php
 /*
-* Ladda upp filer (bilder) i en katalog.
+* Ladda upp varor i en katalog,
+* samt spara info i textfil.
 *
 * PHP version 7
-* @category   Filuppladdning
+* @category   Webbshop
 * @author     Karim Ryde <karye.webb@gmail.com>
 * @license    PHP CC
 */
@@ -22,8 +23,12 @@
 <?php
 /* Kolla att man har klickat på knappen 'submit' */
 if (isset($_POST['submit'])) {
+    /* Ta emot data */
     $filen =  $_FILES['filen'];
+    $beskrivning = $_POST['beskrivning'];
+    $pris = $_POST['pris'];
 
+    /* Ladda upp bilden */
     /* Plocka ut filnamnet */
     $fileName = $filen['name'];
 
@@ -65,7 +70,7 @@ if (isset($_POST['submit'])) {
             $fileNewName = uniqid('', true) . '.' . $fileExt[1];
 
             /* Hela sökvägen till den nya filen */
-            $fileDestination = "./bilder/$fileNewName";
+            $fileDestination = "./varor/$fileNewName";
 
             /* Flytta filen rätt */
             move_uploaded_file($fileTempName, $fileDestination);
@@ -77,9 +82,15 @@ if (isset($_POST['submit'])) {
     } else {
         echo "<p>Icke tillåten filtyp!</p>";
     }
+    /* Uppladdning slutförd */
+
+    /* Spara texten: beskrivning, pris, bildens nya namn */
+    $handtag = fopen('beskrivning.txt', 'a');
+    fwrite($handtag, $beskrivning . '¤' .$pris . '¤' . $fileNewName . PHP_EOL);
+    fclose($handtag);
 }
 ?>
-    <form action="upload.php" method="post" enctype="multipart/form-data">
+    <form action="#" method="post" enctype="multipart/form-data">
         <label>Beskrivning</label><input type="text" name="beskrivning"><br>
         <label>Pris</label><input type="text" name="pris"><br>
         <input type="file" name="filen"><br>

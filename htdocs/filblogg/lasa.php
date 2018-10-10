@@ -12,7 +12,7 @@
 <body>
     <?php include "header.inc"?>
     <main>
-        <?php
+<?php
 /* Öppna textfilen och läsa innehållet och skriv ut det. */
 
 $allaRader = file("inlaggen.txt");
