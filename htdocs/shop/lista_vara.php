@@ -21,7 +21,10 @@
     <div class="kontainer">
         <header>
             <h1>Alla varor</h1>
-            <div id="korgen">0 kr</div>
+            <div id="korg">
+                <span id="antalVaror">0</span>
+                <span id="korgen">0</span> kr
+            </div>
         </header>
         <main>
             <?php
@@ -64,6 +67,6 @@ foreach ($allaRader as $rad) {
             Karim Ryde 2018
         </footer>
     </div>
-    <script src="skript.js"></script>
+    <script src="skript2.js"></script>
 </body>
 </html>
