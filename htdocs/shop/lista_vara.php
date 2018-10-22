@@ -23,7 +23,8 @@
             <h1>Alla varor</h1>
             <div id="korg">
                 <span id="antalVaror">0</span>
-                <span id="korgen">0</span> kr
+                <span id="total">0</span> kr
+                <a href="#">Kassan</a>
             </div>
         </header>
         <main>

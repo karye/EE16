@@ -3,6 +3,9 @@ window.onload = start;
 
 function start() {
 
+    const elementAntalVaror = document.querySelector('#antalVaror');
+    const elementTotal = document.querySelector('#total');
+
     /* Lyssna på klick på hela sidan */
     const elementKontainer = document.querySelector('.kontainer');
     elementKontainer.addEventListener('click', klick);
@@ -27,13 +30,13 @@ function start() {
         const elementPris = foralder.querySelector('#pris');
         const elementSumma = foralder.querySelector('#summa');
         const elementAntalVaror = document.querySelector('#antalVaror');
-        const elementKorgen = document.querySelector('#korgen');
+        const elementTotal = document.querySelector('#total');
 
         /* Hämta innehållet i elementen */
         var antal = parseInt(elementAntal.textContent);
         var pris = parseInt(elementPris.textContent);
         var summa = parseInt(elementSumma.textContent);
-        var korgen = parseInt(elementKorgen.textContent);
+        var total = parseInt(elementTotal.textContent);
         var antalVaror = parseInt(elementAntalVaror.textContent);
 
         /* Klickade man i cellen #plus? */
@@ -67,14 +70,14 @@ function start() {
         /* Klickade man i cellen #kop? */
         if (cell.id === 'kop') {
             /* Addera antal * summa */
-            korgen = korgen + summa;
+            total = total + summa;
 
             /* Räkna upp totala antal varor */
             antalVaror = antalVaror + antal;
 
             /* Skriv tillbaka */
-            elementKorgen.textContent = korgen;
-            elementAntalVaror = antalVaror;
+            elementTotal.textContent = total;
+            elementAntalVaror.textContent = antalVaror;
         }
     }
 }

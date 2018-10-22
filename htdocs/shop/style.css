@@ -35,20 +35,27 @@ h1 {
     font-size: 25px;
     text-align: center;
 }
-#antalVaror {
-    background: green;
-    border-radius: 100%;
-    margin-right:100px;
-    padding: 5px;
-    color: #FFF;
-}
 #korg {
-    width: 200px;
     border: 1px solid #CCC; 
     text-align: right;
     padding: 5px;
     border-radius: 5px;
     background: #FFF;
+}
+#antalVaror {
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    text-align: center;
+    background: green;
+    border-radius: 50%;
+    padding-top: 5px;
+    color: #FFF;
+    font-size: 14px;
+}
+#total {
+    width: 100px;
+    display: inline-block;
 }
 main {
     display: grid;

@@ -1,0 +1,33 @@
+body {
+    background: #212121 url('bilder/chuttersnap-299121-unsplash.jpg');
+    background-size: 2000px;
+}
+.kontainer {
+    width: 40%;
+    margin: 100px auto;
+    padding: 50px;
+    background-color: rgba(207, 207, 207, 0.815);
+    border-radius: 2px;
+}
+label {
+    width: 100px;
+    display: inline-block;
+    text-align: right;
+}
+input {
+    width: 200px;
+    padding: 5px;
+    border-radius: 3px;
+}
+.svar {
+    background: #FFF;
+    padding: 5px;
+    border-radius: 3px;
+}
+button {
+    width: 150px;
+    background: #F5A386;
+    color: rgb(71, 71, 71);
+    font-weight: bold;
+    margin-top: 50px;
+}
