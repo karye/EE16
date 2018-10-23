@@ -21,9 +21,9 @@
     <div class="kontainer">
         <header>
             <h1>Alla varor</h1>
-            <form id="korg" method="post" action="">
-                <input id="antalVaror" type="text" value="0">
-                <input id="total" type="text" value="0 kr">
+            <form id="korg" method="post" action="kassa.php">
+                <input id="antalVaror" type="text" value="0" name="antalVaror">
+                <input id="total" type="text" value="0 kr" name="total">
                 <input id="korgen" type="hidden" name="korgen">
                 <button id="kassan">Kassan</button>
             </form>

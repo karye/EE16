@@ -3,6 +3,8 @@ window.onload = start;
 
 function start() {
 
+    /* För att lagra alla köpta varor */
+    var data = [];
     const elementAntalVaror = document.querySelector('#antalVaror');
     const elementTotal = document.querySelector('#total');
 
@@ -12,7 +14,7 @@ function start() {
 
     /* Vad händer när man klickat på sidan? */
     function klick(e) {
-        console.log('Nu har vi en klick event på ' + e.target.nodeName);
+        /* console.log('Nu har vi en klick event på ' + e.target.nodeName); */
 
         /* Har man klickat på en cell (td) */
         if (e.target.nodeName === 'TD') {
@@ -22,22 +24,25 @@ function start() {
 
     /* Nu räknar man */
     function rakna(cell) {
-        console.log('Klick i en cell');
+        /* console.log('Klick i en cell'); */
 
-        /* Leta rätt på närmast #antal, #pris, #summa */
+        /* Leta rätt på närmast #antal, #pris, #summa ... */
         const foralder = cell.parentNode.parentNode.parentNode.parentNode;
+        const elementBeskrivning = foralder.querySelector('#beskrivning');
         const elementAntal = foralder.querySelector('#antal');
         const elementPris = foralder.querySelector('#pris');
         const elementSumma = foralder.querySelector('#summa');
         const elementAntalVaror = document.querySelector('#antalVaror');
         const elementTotal = document.querySelector('#total');
+        const elementKorgen = document.querySelector('#korgen');
 
         /* Hämta innehållet i elementen */
+        var beskrivning = elementBeskrivning.textContent;
         var antal = parseInt(elementAntal.textContent);
         var pris = parseInt(elementPris.textContent);
         var summa = parseInt(elementSumma.textContent);
-        var total = parseInt(elementTotal.textContent);
-        var antalVaror = parseInt(elementAntalVaror.textContent);
+        var total = parseInt(elementTotal.value);
+        var antalVaror = parseInt(elementAntalVaror.value);
 
         /* Klickade man i cellen #plus? */
         if (cell.id === 'plus') {
@@ -76,8 +81,14 @@ function start() {
             antalVaror = antalVaror + antal;
 
             /* Skriv tillbaka */
-            elementTotal.textContent = total;
-            elementAntalVaror.textContent = antalVaror;
+            elementTotal.value = total + ' kr';
+            elementAntalVaror.value = antalVaror;
+
+            /* Spara undan varorna i korgen = dolda input i JSON-format */
+            data.push({ 'beskrivning': beskrivning, 'antal': antal, 'summa': summa });
+            console.log(JSON.stringify(data));
+
+            elementKorgen.value = JSON.stringify(data);
         }
     }
 }
