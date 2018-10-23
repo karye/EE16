@@ -36,26 +36,33 @@ h1 {
     text-align: center;
 }
 #korg {
-    border: 1px solid #CCC; 
     text-align: right;
-    padding: 5px;
-    border-radius: 5px;
-    background: #FFF;
 }
 #antalVaror {
-    display: inline-block;
     width: 25px;
     height: 25px;
     text-align: center;
     background: green;
+    border: none;
     border-radius: 50%;
-    padding-top: 5px;
     color: #FFF;
     font-size: 14px;
 }
 #total {
     width: 100px;
     display: inline-block;
+    text-align: right;
+    border: none;
+    padding: 5px;
+    border-radius: 5px;
+    background: #FFF;
+}
+#kassan {
+    height: 100%;
+    background: green;
+    color: white;
+    border: none;
+    border-radius: 3px;
 }
 main {
     display: grid;
@@ -89,6 +96,9 @@ table {
 }
 table, th, td {
     border: 1px solid #CCC;   
+}
+table #antal, table #plus {
+    width: 25%;
 }
 table #kop {
     background: green;
