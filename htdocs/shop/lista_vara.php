@@ -1,6 +1,6 @@
 <?php
 /*
-* Läsa in alla varor och skapa en lista 
+* Läser in alla varor och skapa en lista 
 * på alla varor.
 *
 * PHP version 7
@@ -18,7 +18,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="kontainer">
+    <div class="kontainer listaVara">
         <header>
             <h1>Alla varor</h1>
             <form id="korg" method="post" action="kassa.php">
@@ -49,8 +49,7 @@ foreach ($allaRader as $rad) {
     echo "<p id=\"beskrivning\">$beskrivning</p>\n";
     echo "<p>Styckpris: <span id=\"pris\">$pris</span> kr</p>\n";
     echo "<p>Summa: <span id=\"summa\">$pris</span> kr</p>\n";
-    
-    echo "<table>\n";
+    echo "<table class=\"kontroll\">\n";
     echo "<tr>\n";
     echo "<td id=\"antal\" rowspan=\"2\">1</td>\n";
     echo "<td id=\"plus\">+</td>\n";
@@ -60,7 +59,6 @@ foreach ($allaRader as $rad) {
     echo "<td id=\"minus\">-</td>\n";
     echo "</tr>\n";
     echo "</table>\n";
-    
     echo "</div>\n";
 }
 ?>

@@ -1,3 +1,13 @@
+<?php
+/*
+* Listar alla varor i kassan.
+*
+* PHP version 7
+* @category   Webbshop
+* @author     Karim Ryde <karye.webb@gmail.com>
+* @license    PHP CC
+*/
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -7,12 +17,12 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div class="kontainer">
+    <div class="kontainer kassa">
         <header>
             <h1>Kassan</h1>
         </header>
         <main>
-<?php
+            <?php
 /* Kontrollera att data finns */
 if (isset($_POST["antalVaror"]) && 
     isset($_POST["total"]) && 
@@ -22,9 +32,6 @@ if (isset($_POST["antalVaror"]) &&
     $antalVaror = $_POST["antalVaror"];
     $total = $_POST["total"];
     $korgen = $_POST["korgen"];
-
-    echo "<p>Antal varor: $antalVaror</p>";
-    echo "<p>Total : $total</p>";
 
     $varor = json_decode($korgen);
     echo "<table>";
@@ -41,6 +48,8 @@ if (isset($_POST["antalVaror"]) &&
         echo "</tr>";
     }
     echo "</table>";
+    echo "<p>Antal varor: $antalVaror</p>";
+    echo "<p>Total : $total</p>";
 } 
 ?>
         </main>
