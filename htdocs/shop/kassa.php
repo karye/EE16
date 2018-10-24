@@ -23,7 +23,7 @@
         </header>
         <main>
             <?php
-            
+
 /* Kontrollera att data finns */
 if (isset($_POST["antalVaror"]) && 
     isset($_POST["total"]) && 
