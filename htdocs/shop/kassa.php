@@ -23,6 +23,7 @@
         </header>
         <main>
             <?php
+            
 /* Kontrollera att data finns */
 if (isset($_POST["antalVaror"]) && 
     isset($_POST["total"]) && 
@@ -36,20 +37,24 @@ if (isset($_POST["antalVaror"]) &&
     $varor = json_decode($korgen);
     echo "<table>";
     echo "<tr>
-            <th>Beskrivning</th>
+            <th>Vara</th>
             <th>Antal</th>
+            <th>Pris</th>
             <th>Summa</th>
         </tr>";
     foreach ($varor as $vara) {
         echo "<tr>";
         echo "<td>$vara->beskrivning</td>";
         echo "<td>$vara->antal</td>";
+        echo "<td>$vara->pris</td>";
         echo "<td>$vara->summa kr</td>";
         echo "</tr>";
     }
     echo "</table>";
+    echo "<div class=\"total\">";
     echo "<p>Antal varor: $antalVaror</p>";
-    echo "<p>Total : $total</p>";
+    echo "<p>Totalsumma : $total</p>";
+    echo "</div>";
 } 
 ?>
         </main>

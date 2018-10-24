@@ -82,6 +82,9 @@ footer {
     color: #FFF;
     font-size: 14px;
 }
+.listaVara button[type="reset"] {
+    background: red;
+}
 .listaVara .vara {
     font-family: sans-serif;
     font-size: 14px;
@@ -143,5 +146,25 @@ footer {
 
 /* Style för kassa.php */
 .kassa table {
-    
+    width: 100%;
+    border-collapse: collapse;
+}
+.kassa th {
+    text-align: left;
+    padding: 5px;
+    border: none;
+}
+.kassa td {
+    padding: 10px;
+    border:none;
+}
+.kassa th, .kassa td {
+    border-bottom: 1px solid #AAA;
+}
+.kassa .total {
+    background: #FFF;
+    width: 300px;
+    padding: 20px;
+    margin: 20px 0 0 400px;
+    text-align: right;
 }

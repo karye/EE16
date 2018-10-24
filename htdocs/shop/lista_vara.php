@@ -15,6 +15,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Alla varor</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.1/css/all.css" integrity="sha384-5sAR7xN1Nv6T6+dT2mhtzEpVJvfS3NScPQTrOxhwjIuvcA67KV2R5Jz6kr4abQsz" crossorigin="anonymous">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -25,6 +26,7 @@
                 <input id="antalVaror" type="text" value="0" name="antalVaror">
                 <input id="total" type="text" value="0 kr" name="total">
                 <input id="korgen" type="hidden" name="korgen">
+                <button type="reset"><i class="fas fa-trash-alt"></i></button>
                 <button id="kassan">Kassan</button>
             </form>
         </header>
