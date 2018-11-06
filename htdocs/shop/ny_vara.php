@@ -9,6 +9,13 @@
 * @license    PHP CC
 */
 ?>
+<?php
+session_start();
+if (!isset($_SESSION['anamn'])) {
+    header('Location: login.php');
+    exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -21,7 +28,19 @@
 <body>
     <div class="kontainer nyVara">
         <header>
-            <h1>Ny vara</h1>
+            <h1>Shopsmart</h1>
+            <nav>
+<?php
+if (!isset($_SESSION['anamn'])) {
+    echo "<a href=\"./login.php\">Logga in</a>";
+} else {
+    echo "<a href=\"./logout.php\">Logga ut</a>";
+}
+?>
+                <a href="./ny_vara.php">Ny vara</a>
+                <a href="./lista_vara.php">Handla</a>
+            </nav>
+            <h2>Ny vara</h2>
         </header>
         <main>
             <?php
@@ -96,7 +115,10 @@ if (isset($_POST['submit'])) {
             <form action="#" method="post" enctype="multipart/form-data">
                 <label>Beskrivning</label><input type="text" name="beskrivning"><br>
                 <label>Pris</label><input type="text" name="pris"><br>
-                <label>Bild på vara</label><label class="valjFil" for="laddaUpp"><i class="fas fa-file-upload"></i> Välj bild</label><input id="laddaUpp" type="file" name="filen"><br>
+                <label>Bild på vara</label>
+                <label class="valjFil" for="laddaUpp">
+                    <i class="fas fa-file-upload"></i> Välj bild</label>
+                    <input id="laddaUpp" type="file" name="filen"><br>
                 <button type="submit" name="submit">Registrera vara!</button>
             </form>
         </main>

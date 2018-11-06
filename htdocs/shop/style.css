@@ -27,9 +27,28 @@ body {
 }
 header {
     padding: 20px 0;
+    position: sticky;
+    top: 0;
+    background: #DDD;
 }
 h1 {
     font-size: 25px;
+}
+nav {
+    background: #AAA;
+    padding: 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    width: 300px;
+}
+nav a {
+    color: green;
+    font-weight: bold;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+nav a:hover {
+    color: #FFF;
 }
 label {
     width: 150px;
@@ -134,6 +153,11 @@ footer {
 }
 
 /* Style för ny_vara.php */
+.nyVara header {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
+}
 .nyVara .valjFil {
     border: 1px solid #CCC;
     display: inline-block;
@@ -170,4 +194,11 @@ footer {
     padding: 20px;
     margin: 20px 0 0 400px;
     text-align: right;
+}
+
+/* Style för login.php */
+.login header {
+    display: grid;
+    grid-template-columns: auto auto;
+    justify-content: space-between;
 }

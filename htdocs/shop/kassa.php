@@ -8,6 +8,9 @@
 * @license    PHP CC
 */
 ?>
+<?php
+session_start();
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
