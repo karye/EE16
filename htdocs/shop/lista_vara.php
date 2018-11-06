@@ -21,7 +21,12 @@
 <body>
     <div class="kontainer listaVara">
         <header>
-            <h1>Alla varor</h1>
+            <h1>Webbshoppen</h1>
+            <nav>
+                <a href="./ny_vara.php">Ny vara</a>
+                <a href="./lista_vara.php">Handla</a>
+            </nav>
+            <h2>Alla varor</h2>
             <form id="korg" method="post" action="kassa.php">
                 <input id="antalVaror" type="text" value="0" name="antalVaror" readonly>
                 <input id="total" type="text" value="0 kr" name="total" readonly>
@@ -66,7 +71,7 @@ foreach ($allaRader as $rad) {
 ?>
         </main>
         <footer>
-            Karim Ryde 2018
+            En enkel webbshop
         </footer>
     </div>
     <script src="skript2.js"></script>

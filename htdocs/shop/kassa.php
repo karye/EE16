@@ -59,7 +59,7 @@ if (isset($_POST["antalVaror"]) &&
 ?>
         </main>
         <footer>
-            Karim Ryde 2018
+            En enkel webbshop
         </footer>
     </div>
 </body>
