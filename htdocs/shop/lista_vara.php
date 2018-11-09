@@ -86,7 +86,7 @@ foreach ($allaRader as $rad) {
 ?>
         </main>
         <footer>
-            Karim Ryde 2018
+            En enkel webbshop
         </footer>
     </div>
     <script src="skript2.js"></script>

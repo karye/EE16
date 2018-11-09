@@ -123,7 +123,7 @@ if (isset($_POST['submit'])) {
             </form>
         </main>
         <footer>
-            Karim Ryde 2018
+            En enkel webbshop
         </footer>
     </div>
 </body>
