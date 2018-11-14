@@ -26,10 +26,11 @@ $rubrik = filter_input(INPUT_POST, 'rubrik', FILTER_SANITIZE_STRING);
 $meddelande = filter_input(INPUT_POST, 'meddelande', FILTER_SANITIZE_STRING);
 
 if ($adressat && $rubrik && $meddelande) {
-
-    /* Prova skicka mail */
-    mail($adressat, $rubrik, $meddelande);
     echo "<p>Mail skickat till $adressat</p>";
+    echo "<p>Rubriken är $rubrik</p>";
+    echo "<p>Meddelandet är $meddelande</p>";
+} else {
+    echo "<p>Vg fyll i alla fält!</p>";
 }
 ?>
             <form action="#" method="post">

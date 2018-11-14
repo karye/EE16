@@ -220,3 +220,17 @@ footer {
     grid-template-columns: auto auto;
     justify-content: space-between;
 }
+
+/* Style för mail.php */
+.mail header {
+    background: none;
+}
+.mail input, .mail textarea {
+    margin: 10px 0;
+    width: 200px;
+    padding: 10px;
+    border-radius: 5px;
+}
+.mail textarea {
+    height: 100px;
+}

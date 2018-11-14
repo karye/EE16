@@ -30,11 +30,11 @@ if (!isset($_SESSION['anamn'])) {
         <main>
             <?php
 /* Kontrollera att POST-variablerna finns, dvs första gången. */
-if(isset($_POST["anamn"]) && isset($_POST["losen"])) { 
-    
-    /* Ta emot data */
-    $anman = $_POST["anamn"];
-    $losen = $_POST["losen"];
+/* Ta emot data */
+$anamn = filter_input(INPUT_POST, 'anamn', FILTER_SANITIZE_STRING);
+$losen = filter_input(INPUT_POST, 'losen', FILTER_SANITIZE_STRING);
+
+if ($anamn && $losen) { 
     
     /* Kontrollera uppgifter */
     if ($anman == "karyd" && $losen == "123") {
