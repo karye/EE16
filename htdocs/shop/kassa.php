@@ -27,19 +27,21 @@ session_start();
         <main>
             <?php
 /* Ta emot data */
-$antalVaror = filter_input(INPUT_POST, 'antalVaror', FILTER_SANITIZE_NUMBER_INT);
+$antalVaror = filter_input(INPUT_POST,'antalVaror', FILTER_SANITIZE_NUMBER_INT);
 $total = filter_input(INPUT_POST, 'total', FILTER_SANITIZE_NUMBER_INT);
 
-$varor = filter_var_array( json_decode('korgen', true ), [
+$korgen = json_decode($_POST['korgen'], true);
+print_r($korgen);
+
+$varor = filter_var_array($korgen, ['varor' => [
     'beskrivning' => FILTER_SANITIZE_STRING,
-    'antal' => FILTER_SANITIZE_STRING,
+    'antal' => FILTER_SANITIZE_NUMBER_INT,
     'pris' => FILTER_SANITIZE_NUMBER_INT,
     'summa' => FILTER_SANITIZE_NUMBER_INT
- ] );
+ ]] );
 
 /* Kontrollera att data finns */
 if ($antalVaror && $total && $varor) {
-
     echo "<table>";
     echo "<tr>
             <th>Vara</th>

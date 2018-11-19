@@ -5,6 +5,7 @@ function start() {
 
     /* För att lagra alla köpta varor */
     var data = [];
+    var dataText = "";
     const elementAntalVaror = document.querySelector('#antalVaror');
     const elementTotal = document.querySelector('#total');
     const elementKassan = document.querySelector('#kassan');
@@ -101,8 +102,11 @@ function start() {
             elementTotal.value = total + ' kr';
             elementAntalVaror.value = antalVaror;
             
-            data.push({ 'beskrivning': beskrivning, 'antal': antal, 'pris': pris,'summa': summa });
-            elementKorgen.value = JSON.stringify(data);
+            data.push({ 'beskrivning': beskrivning, 'antal': antal, 'pris': pris, 'summa': summa });
+            
+            elementKorgen.value = '{"varor":' + JSON.stringify(data) + '}';
+            console.log(elementKorgen.value);
+            
         }
     }
 }

@@ -1,0 +1,56 @@
+@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow');
+
+/* Enkel CSS-reset */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body, h1, h2, h3, h4, h5, h6, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+/* Sidans utseende */
+body {
+    background: #000;
+}
+.kontainer {
+    width: 800px;
+    margin: 20px auto;
+    color: #FFF;
+}
+h1 {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-size: 50px;
+    text-align: center;
+}
+.yta {
+    background: rgba(255, 255, 255, 0.203);
+    height: 600px;
+    display: grid;
+    grid-template-columns: auto auto auto;
+    justify-content: space-between;
+    align-content: center;
+    padding: 50px;
+}
+i {
+    font-size: 50px;
+    cursor: pointer;
+    transition-duration: 1s;
+    align-self: center;
+}
+i:hover {
+    color: rgb(141, 141, 141)
+}
+.punkter {
+    margin-top: 400px;
+}
+.fa-circle {
+    font-size: 20px;
+    margin: 5px;
+}
+.vald {
+    color: #666;
+}
