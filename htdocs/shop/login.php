@@ -30,28 +30,53 @@ if (!isset($_SESSION['anamn'])) {
         <main>
             <?php
 /* Kontrollera att POST-variablerna finns, dvs första gången. */
-/* Ta emot data */
-$anamn = filter_input(INPUT_POST, 'anamn', FILTER_SANITIZE_STRING);
-$losen = filter_input(INPUT_POST, 'losen', FILTER_SANITIZE_STRING);
+if (isset($_POST['anamn']) && isset($_POST['losen'])) {
+    /* Ta emot data */
+    $anamn = filter_input(INPUT_POST, 'anamn', FILTER_SANITIZE_STRING);
+    $losen = filter_input(INPUT_POST, 'losen', FILTER_SANITIZE_STRING);
 
-if ($anamn && $losen) { 
-    
-    /* Kontrollera uppgifter */
-    if ($anman == "karyd" && $losen == "123") {
-        $_SESSION['anamn'] = "karyd";
-        header('Location: ny_vara.php');
-        exit;
+    /* Läs in admin.txt */
+    $allaRader = file($_SERVER['DOCUMENT_ROOT'] . '/../config/admin.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+
+    /* Loopa igenom rad-för-rad */
+    foreach ($allaRader as $rad) {
+        
+        /* Plocka isär raden i dess beståndsdelar */
+        $delar = explode('¤', $rad);
+        
+        /* Om raden inte innehåller två delar, hoppa över den */
+        if (sizeof($delar) != 2) {
+            continue;
+        }
+
+        /* Plocka ut användarnamnet och hashet */
+        $anamnFil = $delar[0];
+        $hashFil = $delar[1];
+
+        /* Hitta användarnamnet och sen jämför hashen */
+        if ($anamn == $anamnFil) {
+            if (password_verify($losen, $hashFil)) {
+                /* Success! */
+                $_SESSION['anamn'] = $anamn;
+                header('Location: ny_vara.php');
+                exit;
+            } else {
+                echo "<p>Fel lösenord</p>";
+            }
+        } else {
+            echo "<p>Fel användarnamn</p>";
+        }
     }
 }
 ?>
-            <form action="login.php" method="post">
+            <form action="#" method="post">
                 <label>Användarnamn</label><input type="text" name="anamn"><br>
                 <label>Lösenord</label><input type="password" name="losen"><br>
                 <button>Logga in</button>
             </form>
         </main>
         <footer>
-            Karim Ryde 2018
+            Shopsmart 2018
         </footer>
     </div>
 </body>
