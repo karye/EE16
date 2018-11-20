@@ -30,7 +30,8 @@ header {
     padding: 20px 0;
     position: sticky;
     top: 0;
-    background: #DDD;
+    margin-bottom: 10px;
+    background: #9ab697;
 }
 h1 {
     font-size: 30px;

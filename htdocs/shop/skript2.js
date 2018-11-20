@@ -104,9 +104,8 @@ function start() {
             
             data.push({ 'beskrivning': beskrivning, 'antal': antal, 'pris': pris, 'summa': summa });
             
-            elementKorgen.value = '{"varor":' + JSON.stringify(data) + '}';
+            elementKorgen.value = JSON.stringify(data);
             console.log(elementKorgen.value);
-            
         }
     }
 }
