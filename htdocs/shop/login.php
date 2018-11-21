@@ -76,7 +76,7 @@ if (isset($_POST['anamn']) && isset($_POST['losen'])) {
             </form>
         </main>
         <footer>
-            Shopsmart 2018
+            En enkel webbshop 2018
         </footer>
     </div>
 </body>

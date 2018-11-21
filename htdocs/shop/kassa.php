@@ -66,7 +66,7 @@ if ($antalVaror && $total && $varor) {
 ?>
         </main>
         <footer>
-            En enkel webbshop
+            En enkel webbshop 2018
         </footer>
     </div>
 </body>
