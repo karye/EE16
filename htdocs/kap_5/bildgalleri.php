@@ -18,7 +18,7 @@
 <body>
     <?php
 /* Ange sökväg till katalogen */
-$sokvag = './bilder';
+$sokvag = "./bilder";
 
 /* Skanna katalogen */
 $filer = scandir($sokvag);
