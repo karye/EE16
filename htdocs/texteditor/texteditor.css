@@ -1,0 +1,9 @@
+body {
+    background: #000;
+}
+.kontainer {
+    width: 600px;
+    padding: 20px;
+    margin: 100px auto;
+    background: rgb(236, 236, 195);
+}

@@ -1,0 +1,6 @@
+Skapa en webbapp texteditor.php
+1. Man ska kunna skriva en lång text i ett formulär med knapp &#34;Spara&#34;.
+2. När man klickat på &#34;Spara&#34; lagras texten i en textfil.
+3. När man tar upp sidan igen visas senast sparade texten.
+4. Skydda webbappen mot hot.
+5. Infoga felhantering.
