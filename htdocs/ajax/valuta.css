@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Bevan');
+body {
+    background: url("./bilder/bg.jpg");
+    background-size: cover;
+}
+.kontainer {
+    background: rgb(231, 231, 231);
+    padding: 30px;
+    width: 500px;
+    margin: 20px auto;
+    box-shadow: 2px 2px 5px;
+    border-radius: 5px;
+    font-family: 'Bevan', cursive;
+}
+form {
+    display: grid;
+    grid-template-columns: 100px 200px;
+}
+label {
+    align-self: center;
+}
+input, select {
+    padding: 10px;
+    margin: 5px;
+    font-family: 'Courier New', Courier, monospace;
+}

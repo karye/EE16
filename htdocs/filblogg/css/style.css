@@ -1,11 +1,28 @@
+body {
+    background: rgb(255, 255, 255) url("../bilder/bg.jpg");
+    background-size: cover;
+}
+
 .kontainer {
+    background: rgb(214, 214, 214);
     width: 800px;
     margin: 50px auto;
     padding: 20px;
+    border-radius: 10px;
+    box-shadow: 2px 2px 5px;
 }
-
+.navbar {
+    padding: 0;
+}
 main p {
-    background: #b1b1b1;
+    background: #ffffff;
     padding: 20px;
     border-radius: 5px;
+    margin: 20px;
+}
+main form {
+    margin: 20px;
+}
+main button {
+    margin: 10px 0;
 }

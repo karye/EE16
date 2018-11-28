@@ -53,13 +53,7 @@ nav a:hover {
     color: rgb(0, 80, 0);
     background: #EEE;
 }
-nav {
-    background: #AAA;
-    padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    width: 300px;
-}
+
 nav a {
     color: green;
     font-weight: bold;
@@ -194,6 +188,12 @@ footer {
 .kassa table {
     width: 100%;
     border-collapse: collapse;
+}
+.kassa tr:nth-child(even) {
+    background: #CCC
+}
+.kassa tr:nth-child(odd) {
+    background: #FFF
 }
 .kassa th {
     text-align: left;

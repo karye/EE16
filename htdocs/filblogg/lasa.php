@@ -23,7 +23,7 @@ foreach ($allaRader as $rad) {
 ?>
     </main>
     <footer>
-        Karim Ryde 2018
+        2018
     </footer>
     </div>
 </body>
