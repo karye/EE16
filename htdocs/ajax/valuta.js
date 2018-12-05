@@ -20,13 +20,21 @@ function start() {
         
         /* Skicka ajax-anrop till webbtjänsten */
         let ajax = new XMLHttpRequest();
-        ajax.onreadystatechange = function () {
+/*         ajax.onreadystatechange = function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
                 let kurs = JSON.parse(this.responseText);
                 console.log(kurs.rates[valuta]);
                 eResultat.value = belopp * kurs.rates[valuta];
             }
-        };
+        }; */
+
+        ajax.addEventListener("loadend", hamtaKurser);
+        function hamtaKurser() {
+            let kurs = JSON.parse(this.responseText);
+            console.log(kurs.rates[valuta]);
+            eResultat.value = belopp * kurs.rates[valuta];
+        }
+
         ajax.open("GET", url + "?app_id=" + appId, true);
         ajax.send();
     }

@@ -3,8 +3,8 @@
 * Gör ett formulär där användaren ska fylla i namn, adress, postnr, postort och epostadress.
 * Kontrollera att alla fälten är ifyllda, och innehåller minst 3 tecken.
 * Kontrollera att postnumret innehåller 5 tecken och att de tecknen endast är siffror.
-* Kontrollera sedan att e-postadressen innehåller ett @, och minst en punkt.
-* Kontrollera också att e-postadressen är minst sex tecken lång.
+* Kontrollera sedan att epostadressen innehåller ett @, och minst en punkt.
+* Kontrollera också att epostadressen är minst sex tecken lång.
 * 
 * PHP version 7
 * @category   Formulär
