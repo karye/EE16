@@ -10,16 +10,26 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
     padding: 0;
 }
 body {
-    background: #000;
+    background: #A5A5A5;
+    font-family: sans-serif;
 }
 .kontainer {
     width: 500px;
-    background:#AAA;
+    background:#EBF4FB;
     margin: 50px auto;
     padding: 20px;
-    border-radius: 5px;
+    border-radius: 5px;    
 }
-textarea, button {
+input, textarea, button {
     width: 100%;
     padding: 10px;
+    border: 1px solid #ACD8F0;
+    border-radius: 3px;
+}
+textarea {
+    height: 300px;
+    margin: 10px 0;
+}
+button {
+    cursor: pointer;
 }

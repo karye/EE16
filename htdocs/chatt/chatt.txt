@@ -1,0 +1,33 @@
+18:02 Karim Ryde: Hej
+18:02 Karim Ryde: Hur mår du?
+18:03 Julie Sponar: Jag mår bra!
+18:46 Karim Ryde: Vad fint!
+18:46 Karim Ryde: Hur mår du?
+19:43 Karim Ryde: Hej
+19:43 Karim Ryde: Vad fint!
+19:44 Karim Ryde: Vad gör du nu?
+19:45 Karim Ryde: Jag försöker lösa alla problem!
+19:46 Karim Ryde: Vad gör du nu?
+19:46 Karim Ryde: Hur mår du?
+19:46 Karim Ryde: Vad fint!
+19:46 Karim Ryde: Returns a string formatted according to the given format string using the given integer timestamp or the current time if no timestamp is given. In other words, timestamp is optional and defaults to the value of time().
+19:46 Karim Ryde: date — Format a local time/date
+19:46 Karim Ryde: date — Format a local time/date
+19:46 Karim Ryde: You also need to make sure you have your php.ini file include the following set or errors will go only to the log that is set by default or specified in the virtual host&#39;s configuration.
+19:47 Karim Ryde: The php.ini file is where base settings for all PHP on your server, however these can easily be overridden and altered any place in the PHP code and effect everything following that change. A good check is to add the display_errors directive to your php.ini file. If you don&#39;t see an error, but one is being logged, insert this at the top of the file causing the error:
+19:49 Karim Ryde: The php.ini file is where base settings for all PHP on your server, however these can easily be overridden and altered any place in the PHP code and effect everything following that change. A good check is to add the display_errors directive to your php.ini file. If you don&#39;t see an error, but one is being logged, insert this at the top of the file causing the error:
+19:49 Karim Ryde: The php.ini file is where base settings for all PHP on your server, however these can easily be overridden and altered any place in the PHP code and effect everything following that change. A good check is to add the display_errors directive to your php.ini file. If you don&#39;t see an error, but one is being logged, insert this at the top of the file causing the error:
+20:59 Karim Ryde: The php.ini file is where base settings for all PHP on your server, however these can easily be overridden and altered any place in the PHP code and effect everything following that change. A good check is to add the display_errors directive to your php.ini file. If you don&#39;t see an error, but one is being logged, insert this at the top of the file causing the error:
+20:59 Karim Ryde: Hur mår du?
+21:00 Karim Ryde: Hur mår du?
+21:00 Karim Ryde: Vad fint!
+21:03 Karim Ryde: Vad fint!
+21:03 Karim Ryde: Hej
+21:04 Karim Ryde: Hej
+21:05 Karim Ryde: Hej
+21:05 Karim Ryde: Hur mår du?
+21:06 Karim Ryde: Hur mår du?
+21:06 Karim Ryde: Vad fint!
+21:06 Karim Ryde: date — Format a local time/date
+21:06 Karim Ryde: Jag försöker lösa alla problem!
+21:06 Karim Ryde: By using jQuery, you can find out when the content of the textarea changes using:  $(&#34;#object&#34;).change(function() {   scrollToBottom(); }); And scroll to the bottom using:  function scrollToBottom() {   $(&#39;#object&#39;).scrollTop($(&#39;#object&#39;)[0].scrollHeight); }

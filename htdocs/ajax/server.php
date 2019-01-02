@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title></title>
+    <title>Chatt</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -16,7 +16,6 @@
         $meddelande = filter_input(INPUT_POST, "meddelande", FILTER_SANITIZE_STRING);
     
         echo "$namn:$meddelande";
-    
     }
     ?>
 </body>
