@@ -5,9 +5,21 @@ function start() {
     const eTextarea = document.querySelector("#chatt");
     const eInput2 = document.querySelector("#meddelande");
     const eButton = document.querySelector("button");
-    let url = "server.php";
-    
-    eTextarea.addEventListener("change", skrollaNed);
+
+    let timer = setInterval(uppdateraChatt, 1000);
+
+    function uppdateraChatt() {
+        console.log("uppdateraChatt");
+        
+        let ajax = new XMLHttpRequest();
+        ajax.addEventListener("loadend", sparaData);
+        function sparaData() {
+            eTextarea.textContent = this.responseText;
+        }
+        ajax.open("POST", "hamta.php", true);
+        ajax.send();
+    }
+
     function skrollaNed() {
         eTextarea.scrollTop = eTextarea.scrollHeight;
     }
@@ -21,7 +33,7 @@ function start() {
         function sparaData() {
             console.log(this.responseText);
         }
-        ajax.open("POST", url, true);
+        ajax.open("POST", "spara.php", true);
         
         /* Läs av formulärets innehåll */
         let formData = new FormData();
