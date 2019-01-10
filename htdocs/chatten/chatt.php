@@ -9,21 +9,30 @@
 <body>
     <?php
     $namn = "";
-    if (isset($_POST["namn"]) && isset($_POST["meddelande"])) {
 
-        /* Hämtade och sanerade data */
-        $namn = filter_input(INPUT_POST, "namn", FILTER_SANITIZE_STRING);
-        $meddelande = filter_input(INPUT_POST, "meddelande", FILTER_SANITIZE_STRING);
-
-        /* Skriv ned meddelandet i en textfil, format: tid namn: meddelande */
-        $tid = date("h:i");
-        $handtag = fopen("chatt.txt", "a");
-        fwrite($handtag, "$tid $namn: $meddelande" . PHP_EOL);
-        fclose($handtag);
-
-    } else {
-        echo "<p>Det funkade inte</p>";
+    if (isset($_POST["losen"])) {
+        $losen = filter_input(INPUT_POST, "losen", FILTER_SANITIZE_STRING);
+        if ($losen == "123") {
+            if (isset($_POST["namn"]) && isset($_POST["meddelande"])) {
+    
+                /* Hämtade och sanerade data */
+                $namn = filter_input(INPUT_POST, "namn", FILTER_SANITIZE_STRING);
+                $meddelande = filter_input(INPUT_POST, "meddelande", FILTER_SANITIZE_STRING);
+        
+                /* Skriv ned meddelandet i en textfil, format: tid namn: meddelande */
+                $tid = date("h:i");
+                $handtag = fopen("chatt.txt", "a");
+                fwrite($handtag, "$tid $namn: $meddelande" . PHP_EOL);
+                fclose($handtag);
+        
+            } else {
+                echo "<p>Det funkade inte</p>";
+            }
+        } else {
+            echo "<script>alert('Fel lösenord!');</script>";
+        }
     }
+    
     ?>
     <div class="kontainer">
         <h1><?php
@@ -32,6 +41,8 @@
         <form action="#" method="post">
             <label>Namn</label>
             <input type="text" name="namn" id="namn" placeholder="Ditt namn..." value="<?php echo $namn; ?>">
+            <label>Lösenord</label>
+            <input type="password" name="losen" id="losen" placeholder="Ange lösenordet...">
             <textarea id="chatt" cols="30" rows="25" readonly></textarea>
             <input type="text" name="meddelande" id="meddelande" placeholder="Ditt meddelande...">
             <button>Skicka</button>
