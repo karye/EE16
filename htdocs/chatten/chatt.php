@@ -8,10 +8,13 @@
 </head>
 <body>
     <?php
+    /* En tom variabel */
     $namn = "";
 
     if (isset($_POST["losen"])) {
         $losen = filter_input(INPUT_POST, "losen", FILTER_SANITIZE_STRING);
+
+        /* Testar om korrekt lösenord */
         if ($losen == "123") {
             if (isset($_POST["namn"]) && isset($_POST["meddelande"])) {
     
