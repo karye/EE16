@@ -1,0 +1,50 @@
+/* Enkel CSS-reset */
+html {
+    box-sizing: border-box;
+}
+*, *:before, *:after {
+    box-sizing: inherit;
+}
+body, h1, h2, h3, h4, h5, h6, p, ul {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: rgb(73, 73, 73);
+}
+.kontainer {
+    background: rgb(146, 146, 146);
+    width: 600px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+    font-family: sans-serif;
+}
+form {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 20px;
+}
+label, input, button {
+    padding: 10px;
+    border: none;
+    border-radius: 3px;
+}
+label {
+    text-align: right;
+}
+table {
+    width: 100%;
+    border-collapse: collapse
+}
+th, td {
+    padding: 5px;
+    text-align: left;
+}
+tr:nth-child(even) {
+    background: #CCC;
+}
+tr:nth-child(odd) {
+    background: #FFF;
+}
