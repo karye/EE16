@@ -15,7 +15,7 @@ session_start();
         <header>
             <h1>Shopsmart</h1>
             <nav>
-            <?php
+                <?php
 if (!isset($_SESSION['anamn'])) {
     echo "<a href=\"./login.php\">Logga in</a>";
 } else {
@@ -34,10 +34,10 @@ if (isset($_POST['anamn']) && isset($_POST['losen'])) {
     /* Ta emot data */
     $anamn = filter_input(INPUT_POST, 'anamn', FILTER_SANITIZE_STRING);
     $losen = filter_input(INPUT_POST, 'losen', FILTER_SANITIZE_STRING);
-
+    
     /* Läs in admin.txt */
     $allaRader = file($_SERVER['DOCUMENT_ROOT'] . '/../config/admin.txt', FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
-
+    
     /* Loopa igenom rad-för-rad */
     foreach ($allaRader as $rad) {
         
@@ -48,11 +48,11 @@ if (isset($_POST['anamn']) && isset($_POST['losen'])) {
         if (sizeof($delar) != 2) {
             continue;
         }
-
+        
         /* Plocka ut användarnamnet och hashet */
         $anamnFil = $delar[0];
         $hashFil = $delar[1];
-
+        
         /* Hitta användarnamnet och sen jämför hashen */
         if ($anamn == $anamnFil) {
             if (password_verify($losen, $hashFil)) {

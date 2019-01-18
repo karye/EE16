@@ -11,10 +11,10 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 body {
-    background: rgb(73, 73, 73);
+    background: #9db4b2;
 }
 .kontainer {
-    background: rgb(146, 146, 146);
+    background: #946060;
     width: 600px;
     margin: 100px auto;
     padding: 30px;
@@ -47,4 +47,10 @@ tr:nth-child(even) {
 }
 tr:nth-child(odd) {
     background: #FFF;
+}
+button {
+    cursor: pointer;
+}
+button:hover {
+    background: #ffffff;
 }

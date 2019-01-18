@@ -9,7 +9,10 @@
 <body>
     <div class="kontainer">
         <?php
+
+        /* Läs in textfilen */
         $allaRader = file("register.txt");
+        
         echo "<table>";
         echo "<tr>
                 <th>Förnamn</th>
