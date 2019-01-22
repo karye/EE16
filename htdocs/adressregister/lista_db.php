@@ -1,5 +1,7 @@
 <?php
 include_once("../../admin/konfig_db.php");
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -7,11 +9,17 @@ include_once("../../admin/konfig_db.php");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Lista addresserna</title>
+    <title>Adressregister</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="kontainer">
+        <h3>Lista alla personer</h3>
+        <nav>
+            <a href="logga_in_db.php">Logga in</a>
+            <a href="registrera_db.php">Registrera</a>
+            <a href="lista_db.php">Lista</a>
+        </nav>
         <?php
 
         /* Logga in på databasen, och skapa en anslutning */
@@ -21,7 +29,7 @@ include_once("../../admin/konfig_db.php");
         if ($conn->connect_error) {
             die("Kunde inte ansluta till databasen: " . $conn->connect_error);
         } else {
-            echo "<p>Anslutningen lyckades!</p>";
+            /* echo "<p>Anslutningen lyckades!</p>"; */
         }
 
         /* Skapa SQL-frågan */
@@ -30,9 +38,9 @@ include_once("../../admin/konfig_db.php");
 
         /* Gick det bra? Kunde SQL-satsen köras? */
         if (!$result) {
-            die("Det blev fel med SQL-satsen.");
+            die("Något blev fel med SQL-satsen.");
         } else {
-            echo "<p>Personernas data kunde hämtas!</p>";
+            /* echo "<p>Personernas data kunde hämtas!</p>"; */
         }
 
         echo "<table>";
@@ -52,6 +60,13 @@ include_once("../../admin/konfig_db.php");
             echo "<td>{$rad['enamn']}</td>";
             /* Skriv ut epost inom en cell */
             echo "<td>{$rad['epost']}</td>";
+
+            /* Skapa knapp för att radera raden */
+            echo "<td><a href=\"radera_verifiera_db.php?id={$rad['id']}\">Radera</a>
+            </td>";
+
+            /* Skapa knapp för att redigera raden */
+            echo "<td><a href=\"redigera_db.php\">Redigera</a></td>";
 
             echo "</tr>";
         }

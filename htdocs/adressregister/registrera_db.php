@@ -1,5 +1,7 @@
 <?php
 include_once("../../admin/konfig_db.php");
+
+session_start();
 ?>
 
 <!DOCTYPE html>
@@ -7,7 +9,7 @@ include_once("../../admin/konfig_db.php");
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Addressregister</title>
+    <title>Adressregister</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -26,7 +28,7 @@ include_once("../../admin/konfig_db.php");
         if ($conn->connect_error) {
             die("Kunde inte ansluta till databasen: " . $conn->connect_error);
         } else {
-            echo "<p>Anslutningen lyckades!</p>";
+            /* echo "<p>Anslutningen lyckades!</p>"; */
         }
 
         /* Lagra data i tabellen */
@@ -46,7 +48,12 @@ include_once("../../admin/konfig_db.php");
     }    
 ?>
     <div class="kontainer">
-        <h3>Registrera address</h3>
+        <h3>Registrera person</h3>
+        <nav>
+            <a href="logga_in_db.php">Logga in</a>
+            <a href="registrera_db.php">Registrera</a>
+            <a href="lista_db.php">Lista</a>
+        </nav>
         <form action="#" method="post">
             <label>Förnamn</label>
             <input name="fnamn" type="text">
