@@ -3,8 +3,6 @@ window.onload = start;
 function start() {
     const canvas = document.querySelector("#myCanvas");
     var ctx = canvas.getContext("2d");
-
-    /* Animationsloopen */
     var bollX, bollY, dx, dy, racketX, racketY, points, lives;
     racketX = 10;
     racketY = 100;
@@ -65,6 +63,7 @@ function start() {
     /* Nollställ spelet */
     reset();
 
+    /* Animationsloopen */
     function loop() {
         /* Sudda bort allt */
         ctx.clearRect(0, 0, 800, 600);
