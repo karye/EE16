@@ -6,9 +6,10 @@
 5. Skapa variabler: array map, character, array keys
 6. Skapa labyrinten
 7. Rita ut labyrinten (array)
-8. Rita ut en karaktär (bild)
-9. Förflytta karaktären med pil-tangenter
-10. Förflyttning bara inom labyrintens gångar
+8. Rita ut en karaktär
+9. Rita ut en karaktär (bild)
+10. Förflytta karaktären med pil-tangenter
+11. Förflyttning bara inom labyrintens gångar
 */
 
 window.onload = start;
