@@ -23,6 +23,7 @@ function start() {
         racketY = 580;
 
         antalKlossar = 0;
+        skapaAllaKlossar();
     }
 
     /* Racket */
@@ -105,14 +106,15 @@ function start() {
     document.addEventListener("keydown", tryckPil);
     document.addEventListener("keyup", slappPil);
 
+    /* Lagra vilken tangentpil som tryckts */
     function tryckPil(e) {
         keys[e.key] = true;
     }
-
     function slappPil(e) {
         keys[e.key] = false;
     }
 
+    /*  */
     function uppdateraRacket() {
         if (keys["ArrowLeft"] && racketX > 10) {
             racketX -= 10;
@@ -124,7 +126,6 @@ function start() {
 
     /* Innan spelet börjar */
     reset();
-    skapaAllaKlossar();
 
     /* Animationsloopen */
     function gameLoop() {
@@ -149,13 +150,11 @@ function start() {
         ritaRacket(racketX, racketY);
 
         /* Bollen ska studsa på racketen */
-        /* Kolla om bollen är nere på bottenkanten */
-        if (bollY >= 560) {
-            /* Kolla om bollen är nära racketen */
-            if ((bollX >= (racketX - 20)) && (bollX <= (racketX + 90))) {
+        if (((bollY + 20) >= racketY) && 
+            (bollX >= racketX && (bollX <= (racketX + 70)))) {
                 vy = -vy;
-            }
         }
+
         /* Bollen når bottenkanten, spelet är förlorat */
         if (bollY >= 600) {
             alert("Gamer Over!");
