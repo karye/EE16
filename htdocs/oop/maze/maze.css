@@ -11,7 +11,7 @@ body, h1, h2, h3, h4, h5, h6, p, ul {
 }
 
 canvas {
-    background: #000;
+    background: #FFF;
     margin: 50px auto;
     display: block;
 }

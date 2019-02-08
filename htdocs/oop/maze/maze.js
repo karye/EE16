@@ -6,6 +6,9 @@
 5. Skapa variabler: array map, character, array keys
 6. Skapa labyrinten
 7. Rita ut labyrinten (array)
+8. Rita ut en karaktär (bild)
+9. Förflytta karaktären med pil-tangenter
+10. Förflyttning bara inom labyrintens gångar
 */
 
 window.onload = start;
@@ -33,7 +36,8 @@ function start() {
         [1, 0, 1, 0, 0, 1, 1, 1, 0, 1, 0, 1],
         [1, 0, 1, 1, 0, 1, 0, 0, 0, 1, 0, 1],
         [1, 0, 0, 0, 0, 1, 0, 1, 1, 1, 0, 1],
-        [1, 1, 1, 1, 1, 1, 0, 0, 0, 0, 0, 1]
+        [1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 1],
+        [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ];
 
     function reset() {
@@ -44,19 +48,19 @@ function start() {
     /* Kloss */
     function ritaKloss(x, y) {
         ctx.beginPath();
-        ctx.rect(x, y, 30, 30);
-        ctx.fillStyle = "#FFF";
+        ctx.rect(x, y, 40, 40);
+        ctx.fillStyle = "#000";
         ctx.fill();
         ctx.closePath();
     }
 
     function ritaLabyrint() {
-        /* Höjden = y */
-        for (var j = 0; j < 12; j++) {
+        /* Höjdled = y */
+        for (var j = 0; j < 13; j++) {
             /* Sidled = x */
-            for (var i = 0; i < 12; i++) {
-                if (map[j][i] == 0) {
-                    ritaKloss(i * 30, j * 30);
+            for (var i = 0; i < 13; i++) {
+                if (map[j][i] == 1) {
+                    ritaKloss(i * 40, j * 40);
                 }
             }
         }
