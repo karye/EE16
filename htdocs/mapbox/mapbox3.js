@@ -4,7 +4,7 @@ function start() {
     const eBox = document.querySelector(".coordinates");
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2FyeWUiLCJhIjoiY2pwOXRtbWc1MGdmNjNwc2JmdGxzeDR5byJ9.whp8f2Ttws57ctAf_stuag';
-    let map = new mapboxgl.Map({
+    var map = new mapboxgl.Map({
         container: 'map', // container id
         style: 'mapbox://styles/karye/cjpb2b4yz0g2v2sqc8wlqsm6y', // stylesheet location
         center: [18.07, 59.33], // starting position [lng, lat]
@@ -14,7 +14,7 @@ function start() {
     map.on("click", addMarker);
 
     function addMarker(e) {
-        let marker = new mapboxgl.Marker()
+        var marker = new mapboxgl.Marker()
             .setLngLat(e.lngLat)
             .addTo(map);
 

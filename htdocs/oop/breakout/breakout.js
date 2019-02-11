@@ -57,10 +57,10 @@ function start() {
     /* Skapa en array för alla klossar */
     function skapaAllaKlossar() {
         /* Skapa rader */
-        for (let j = 1; j < 5; j++) {
+        for (var j = 1; j < 5; j++) {
             klossar[j] = [];
             /* Skapa klossar */
-            for (let i = 0; i < 6; i++) {
+            for (var i = 0; i < 6; i++) {
                 klossar[j][i] = {
                     x: 40 + i * 120,
                     y: j * 50,
@@ -74,9 +74,9 @@ function start() {
     /* Rita ut klossar som finns i arrayen */
     function uppdateraAllaKlossar() {
         /* Skapa rader */
-        for (let j = 1; j < 5; j++) {
+        for (var j = 1; j < 5; j++) {
             /* Skapa klossar */
-            for (let i = 0; i < 6; i++) {
+            for (var i = 0; i < 6; i++) {
                 if (!klossar[j][i].hit) {
                     ritaKloss(40 + i * 120, j * 50);
                 }
@@ -86,8 +86,8 @@ function start() {
 
     /* Ta bort kloss vid träff av boll */
     function traffaKloss() {
-        for (let j = 1; j < 5; j++) {
-            for (let i = 0; i < 6; i++) {
+        for (var j = 1; j < 5; j++) {
+            for (var i = 0; i < 6; i++) {
                 if (!klossar[j][i].hit) {
                     if ((bollX >= klossar[j][i].x) &&
                         (bollX <= (klossar[j][i].x + 100)) &&
@@ -124,7 +124,7 @@ function start() {
         }
     }
 
-    /* Innan spelet börjar */
+    /* Innan spevar börjar */
     reset();
 
     /* Animationsloopen */
@@ -155,7 +155,7 @@ function start() {
                 vy = -vy;
         }
 
-        /* Bollen når bottenkanten, spelet är förlorat */
+        /* Bollen når bottenkanten, spevar är förlorat */
         if (bollY >= 600) {
             alert("Gamer Over!");
             reset();

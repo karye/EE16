@@ -9,7 +9,7 @@ function start() {
     function uppdateraChatten() {
         
         /* Anropa ett php-skript som läser av chattfilen */
-        let ajax = new XMLHttpRequest();
+        var ajax = new XMLHttpRequest();
         ajax.addEventListener("loadend", skrivUt);
         
         function skrivUt() {

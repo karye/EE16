@@ -13,16 +13,16 @@ function start() {
     eValuta.addEventListener("change", vaxla);
 
     function vaxla() {
-        let belopp = eBelopp.value;
+        var belopp = eBelopp.value;
         console.log(belopp);
-        let valuta = eValuta.value;
+        var valuta = eValuta.value;
         console.log(valuta);
         
         /* Skicka ajax-anrop till webbtjänsten */
-        let ajax = new XMLHttpRequest();
+        var ajax = new XMLHttpRequest();
 /*         ajax.onreadystatechange = function () {
             if (this.readyState == XMLHttpRequest.DONE && this.status == 200) {
-                let kurs = JSON.parse(this.responseText);
+                var kurs = JSON.parse(this.responseText);
                 console.log(kurs.rates[valuta]);
                 eResultat.value = belopp * kurs.rates[valuta];
             }
@@ -30,7 +30,7 @@ function start() {
 
         ajax.addEventListener("loadend", hamtaKurser);
         function hamtaKurser() {
-            let kurs = JSON.parse(this.responseText);
+            var kurs = JSON.parse(this.responseText);
             console.log(kurs.rates[valuta]);
             eResultat.value = belopp * kurs.rates[valuta];
         }
