@@ -114,7 +114,7 @@ function start() {
         keys[e.key] = false;
     }
 
-    /*  */
+    /* Flytta racketen */
     function uppdateraRacket() {
         if (keys["ArrowLeft"] && racketX > 10) {
             racketX -= 10;
