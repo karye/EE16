@@ -6,9 +6,9 @@
 5. Skapa variabler: array map, character, array keys
 6. Skapa labyrinten
 7. Rita ut labyrinten (array)
-8. Rita ut en karaktär
-9. Rita ut en karaktär (bild)
-10. Förflytta karaktären med pil-tangenter
+8. Rita ut en spelare
+9. Rita ut en spelare (bild)
+10. Förflytta spelaren med pil-tangenter
 11. Förflyttning bara inom labyrintens gångar
 */
 
@@ -18,7 +18,6 @@ function start() {
     const canvas = document.querySelector("#myCanvas");
     var ctx = canvas.getContext("2d");
 
-    var map = [];
     var spelare = {
         x: 0,
         y: 0
@@ -27,12 +26,18 @@ function start() {
         x: 0,
         y: 0
     };
+    var mynt = {
+        x: 0,
+        y: 0
+    };
     var imgSpelare = new Image();
     imgSpelare.src = "./bilder/pacman.png";
     var imgMonster = new Image();
     imgMonster.src = "./bilder/monster.png";
+    var imgMynt = new Image();
+    imgMynt.src = "./bilder/mynt.png";
 
-    map = [
+    var map = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
         [1, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1],
         [1, 1, 1, 1, 1, 0, 1, 0, 1, 1, 0, 1],
@@ -48,12 +53,16 @@ function start() {
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ];
 
+    /* Startvärden på spelet */
     function reset() {
         spelare.x = 1;
         spelare.y = 1;
 
         monster.x = 4;
         monster.y = 10;
+
+        mynt.x = Math.ceil(Math.random() * 11);
+        mynt.y = Math.ceil(Math.random() * 11);
     }
 
     /* Kloss */
@@ -79,39 +88,51 @@ function start() {
     }
 
     /* Spelaren */
-    function ritaSpelare(x, y) {
+    function ritaSpelare() {
         ctx.beginPath();
-        ctx.drawImage(imgSpelare, x * 40 + 5, y * 40 + 5, 30, 30);
+        ctx.drawImage(imgSpelare, spelare.x * 40 + 5, spelare.y * 40 + 5, 30, 30);
         ctx.closePath();
     }
 
     /* Monster */
-    function ritaMonster(x, y) {
+    function ritaMonster() {
         ctx.beginPath();
-        ctx.drawImage(imgMonster, x * 40 + 5, y * 40 + 5, 30, 30);
+        ctx.drawImage(imgMonster, monster.x * 40 + 5, monster.y * 40 + 5, 30, 30);
         ctx.closePath();
     }
 
     /* Flytta monster slumpmässigt */
     function uppdateraMonster() {
+        var gamlaX = monster.x;
+        var gamlaY = monster.y;
+
         monster.x += Math.ceil(Math.random() * 3 - 2);
         monster.y += Math.ceil(Math.random() * 3 - 2);
 
-        if (monster.x < 0) {
-            monster.x = 11;
+        /* Gick spelaren in i väggen? Backa tillbaka */
+        if (map[monster.y][monster.x] == 1) {
+            monster.x = gamlaX;
+            monster.y = gamlaY;
         }
-        if (monster.x > 11) {
-            monster.x = 0;
-        }
-        if (monster.y < 0) {
-            monster.y = 11;
-        }
-        if (monster.y > 11) {
-            monster.y = 0;
-        }
-
     }
     setInterval(uppdateraMonster, 300);
+
+    /* Mynt */
+    function ritaMynt() {
+        ctx.beginPath();
+        ctx.drawImage(imgMynt, mynt.x * 40 + 5, mynt.y * 40 + 5, 30, 30);
+        ctx.closePath();
+    }
+
+    /* Lägg ut ett mynt slumpmässigt */
+    function spawnaMynt() {
+        if (map[mynt.y][mynt.x] == 1) {
+            mynt.x = Math.ceil(Math.random() * 11);
+            mynt.y = Math.ceil(Math.random() * 11);
+        } else {
+            ritaMynt();
+        }
+    }
 
     /* Lyssna på piltantagenterna */
     document.addEventListener("keydown", uppdateraSpelaren);
@@ -141,6 +162,12 @@ function start() {
         }
     }
 
+    function dead() {
+        if (spelare.x == monster.x && spelare.y == monster.y) {
+            alert("Game Over!");
+            reset();
+        }
+    }
     reset();
 
     /* Spelets animationsloop */
@@ -149,9 +176,9 @@ function start() {
         ctx.clearRect(0, 0, 800, 600);
 
         ritaLabyrint();
-        ritaSpelare(spelare.x, spelare.y);
-
-        ritaMonster(monster.x, monster.y);
+        ritaSpelare();
+        ritaMonster();
+        spawnaMynt();
 
         requestAnimationFrame(gameLoop);
     }
