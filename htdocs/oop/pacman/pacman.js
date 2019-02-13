@@ -18,6 +18,7 @@ function start() {
     const canvas = document.querySelector("#myCanvas");
     var ctx = canvas.getContext("2d");
 
+    var points = 0;
     var spelare = {
         x: 0,
         y: 0
@@ -26,16 +27,11 @@ function start() {
         x: 0,
         y: 0
     };
-    var mynt = {
-        x: 0,
-        y: 0
-    };
+
     var imgSpelare = new Image();
     imgSpelare.src = "./bilder/pacman.png";
     var imgMonster = new Image();
     imgMonster.src = "./bilder/monster.png";
-    var imgMynt = new Image();
-    imgMynt.src = "./bilder/mynt.png";
 
     var map = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -53,6 +49,45 @@ function start() {
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
     ];
 
+    class Mynt {
+        constructor() {
+            this.x = 0;
+            this.y = 0;
+            this.imgMynt = new Image();
+            this.imgMynt.src = "./bilder/mynt.png";
+            this.live = true;
+        }
+        reset() {
+            this.x = Math.ceil(Math.random() * 11);
+            this.y = Math.ceil(Math.random() * 11);
+        }
+        ritaMynt() {
+            ctx.beginPath();
+            ctx.drawImage(this.imgMynt, this.x * 40 + 5, this.y * 40 + 5, 30, 30);
+            ctx.closePath();
+        }
+        spawnaMynt() {
+            if (this.live) {
+                if (map[this.y][this.x] == 1) {
+                    this.x = Math.ceil(Math.random() * 11);
+                    this.y = Math.ceil(Math.random() * 11);
+                } else {
+                    this.ritaMynt();
+                }
+            }
+        }
+        getPoints() {
+            if (this.live && this.x == spelare.x && this.y == spelare.y) {
+                points += 10;
+                this.live = false;
+                console.log("points = " + points);
+            }
+        }
+    }
+
+    var mynt1 = new Mynt();
+    var mynt2 = new Mynt();
+
     /* Startvärden på spelet */
     function reset() {
         spelare.x = 1;
@@ -61,8 +96,8 @@ function start() {
         monster.x = 4;
         monster.y = 10;
 
-        mynt.x = Math.ceil(Math.random() * 11);
-        mynt.y = Math.ceil(Math.random() * 11);
+        mynt1.reset();
+        mynt2.reset();
     }
 
     /* Kloss */
@@ -117,23 +152,6 @@ function start() {
     }
     setInterval(uppdateraMonster, 300);
 
-    /* Mynt */
-    function ritaMynt() {
-        ctx.beginPath();
-        ctx.drawImage(imgMynt, mynt.x * 40 + 5, mynt.y * 40 + 5, 30, 30);
-        ctx.closePath();
-    }
-
-    /* Lägg ut ett mynt slumpmässigt */
-    function spawnaMynt() {
-        if (map[mynt.y][mynt.x] == 1) {
-            mynt.x = Math.ceil(Math.random() * 11);
-            mynt.y = Math.ceil(Math.random() * 11);
-        } else {
-            ritaMynt();
-        }
-    }
-
     /* Lyssna på piltantagenterna */
     document.addEventListener("keydown", uppdateraSpelaren);
 
@@ -162,12 +180,13 @@ function start() {
         }
     }
 
-    function dead() {
+    function isDead() {
         if (spelare.x == monster.x && spelare.y == monster.y) {
             alert("Game Over!");
             reset();
         }
     }
+
     reset();
 
     /* Spelets animationsloop */
@@ -178,7 +197,14 @@ function start() {
         ritaLabyrint();
         ritaSpelare();
         ritaMonster();
-        spawnaMynt();
+
+        mynt1.spawnaMynt();
+        mynt2.spawnaMynt();
+
+        mynt1.getPoints();
+        mynt2.getPoints();
+
+        isDead();
 
         requestAnimationFrame(gameLoop);
     }
