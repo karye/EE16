@@ -23,15 +23,9 @@ function start() {
         x: 0,
         y: 0
     };
-    var monster = {
-        x: 0,
-        y: 0
-    };
 
     var imgSpelare = new Image();
     imgSpelare.src = "./bilder/pacman.png";
-    var imgMonster = new Image();
-    imgMonster.src = "./bilder/monster.png";
 
     var map = [
         [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1],
@@ -88,13 +82,62 @@ function start() {
     var mynt1 = new Mynt();
     var mynt2 = new Mynt();
 
+    class Monster {
+        constructor() {
+            this.x = 0;
+            this.y = 0;
+            this.imgMonster = new Image();
+            this.imgMonster.src = "./bilder/monster.png";
+        }
+        reset() {
+            var that = this;
+            setInterval(function() {
+                that.uppdateraMonster();
+            }, 300);
+        }
+        ritaMonster() {
+            ctx.beginPath();
+            ctx.drawImage(this.imgMonster, this.x * 40 + 5, this.y * 40 + 5, 30, 30);
+            ctx.closePath();
+        }
+        uppdateraMonster() {
+            var gamlaX = this.x;
+            var gamlaY = this.y;
+
+            this.x += Math.ceil(Math.random() * 3 - 2);
+            this.y += Math.ceil(Math.random() * 3 - 2);
+
+            /* Gick spelaren in i väggen? Backa tillbaka */
+            if (map[this.y][this.x] == 1) {
+                this.x = gamlaX;
+                this.y = gamlaY;
+            }
+        }
+        collision(spelare) {
+            if (spelare.x == this.x && spelare.y == this.y) {
+                alert("Game Over!");
+                reset();
+            }
+        }
+    }
+
+    var monster1 = new Monster();
+    var monster2 = new Monster();
+
     /* Startvärden på spelet */
     function reset() {
         spelare.x = 1;
         spelare.y = 1;
 
-        monster.x = 4;
-        monster.y = 10;
+        monster1.x = 4;
+        monster1.y = 10;
+        monster1.reset();
+        monster2.x = 8;
+        monster2.y = 11;
+        monster2.reset();
+
+        monster1.x = 4;
+        monster1.y = 10;
 
         mynt1.reset();
         mynt2.reset();
@@ -129,29 +172,6 @@ function start() {
         ctx.closePath();
     }
 
-    /* Monster */
-    function ritaMonster() {
-        ctx.beginPath();
-        ctx.drawImage(imgMonster, monster.x * 40 + 5, monster.y * 40 + 5, 30, 30);
-        ctx.closePath();
-    }
-
-    /* Flytta monster slumpmässigt */
-    function uppdateraMonster() {
-        var gamlaX = monster.x;
-        var gamlaY = monster.y;
-
-        monster.x += Math.ceil(Math.random() * 3 - 2);
-        monster.y += Math.ceil(Math.random() * 3 - 2);
-
-        /* Gick spelaren in i väggen? Backa tillbaka */
-        if (map[monster.y][monster.x] == 1) {
-            monster.x = gamlaX;
-            monster.y = gamlaY;
-        }
-    }
-    setInterval(uppdateraMonster, 300);
-
     /* Lyssna på piltantagenterna */
     document.addEventListener("keydown", uppdateraSpelaren);
 
@@ -180,13 +200,7 @@ function start() {
         }
     }
 
-    function isDead() {
-        if (spelare.x == monster.x && spelare.y == monster.y) {
-            alert("Game Over!");
-            reset();
-        }
-    }
-
+    /* Innan första spelet ange startvärden */
     reset();
 
     /* Spelets animationsloop */
@@ -196,15 +210,16 @@ function start() {
 
         ritaLabyrint();
         ritaSpelare();
-        ritaMonster();
+
+        monster1.ritaMonster();
+        monster2.ritaMonster();
+        monster1.collision(spelare);
+        monster2.collision(spelare);
 
         mynt1.spawnaMynt();
         mynt2.spawnaMynt();
-
         mynt1.getPoints();
         mynt2.getPoints();
-
-        isDead();
 
         requestAnimationFrame(gameLoop);
     }
