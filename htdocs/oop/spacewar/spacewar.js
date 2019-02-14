@@ -7,7 +7,9 @@ function start() {
     var keys = [];
     var raket = {
         x: 0,
-        y: 0
+        y: 0,
+        v: 0,
+        h: 0
     };
 
     var imgRaket = new Image();
@@ -29,11 +31,17 @@ function start() {
     }
     /* Flytta raketen */
     function uppdateraRaket() {
-        if (keys["ArrowLeft"] && raket.x > 10) {
-            raket.x -= 10;
+        if (keys["ArrowLeft"]) {
+            raket.x -= 3;
         }
-        if (keys["ArrowRight"] && raket.y < 720) {
-            raket.y += 10;
+        if (keys["ArrowRight"]) {
+            raket.x += 3;
+        }
+        if (keys["ArrowUp"]) {
+            raket.y -= 3;
+        }
+        if (keys["ArrowDown"]) {
+            raket.y += 3;
         }
     }
 
