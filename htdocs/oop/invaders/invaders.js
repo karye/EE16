@@ -13,6 +13,39 @@ function start() {
         y: 0
     }
 
+    /* Mall för skott */
+    class Skott {
+        constructor() {
+            this.x = 0;
+            this.y = 0;
+            this.hastighet = 10;
+            this.hit = false;
+            this.shot = false;
+        }
+        rita() {
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, 5, 0, Math.PI * 2, false);
+            ctx.fillStyle = "yellow";
+            ctx.fill();
+            ctx.closePath();
+        }
+        uppdatera() {
+            if (this.shot) {
+                this.y -= this.hastighet;
+                if (this.y < 0) {
+                    this.shot = false;
+                }
+            } else {
+                this.x = racket.x + 35;
+                this.y = racket.y;
+            }
+        }
+        kollision() {
+
+        }
+    }
+    var skott1 = new Skott();
+
     /* Ge variabler starvärden */
     function reset() {
 
@@ -25,9 +58,9 @@ function start() {
     }
 
     /* Racket */
-    function ritaRacket(x, y) {
+    function ritaRacket() {
         ctx.beginPath();
-        ctx.rect(x, y, 70, 10);
+        ctx.rect(racket.x, racket.y, 70, 10);
         ctx.fillStyle = "#FFF";
         ctx.fill();
         ctx.closePath();
@@ -72,24 +105,6 @@ function start() {
         }
     }
 
-    /* Ta bort kloss vid träff av boll */
-/*     function traffaKloss() {
-        for (var j = 1; j < 5; j++) {
-            for (var i = 0; i < 6; i++) {
-                if (!klossar[j][i].hit) {
-                    if ((boll.x >= klossar[j][i].x) &&
-                        (boll.x <= (klossar[j][i].x + 100)) &&
-                        (boll.y >= klossar[j][i].y) &&
-                        (boll.y <= (klossar[j][i].y + 30))) {
-                        klossar[j][i].hit = true;
-                        boll.vy = -boll.vy;
-                        antalKlossar--;
-                    }
-                }
-            }
-        }
-    } */
-
     /* Lyssna på piltantagenterna */
     document.addEventListener("keydown", tryckPil);
     document.addEventListener("keyup", slappPil);
@@ -98,6 +113,7 @@ function start() {
     function tryckPil(e) {
         keys[e.key] = true;
     }
+
     function slappPil(e) {
         keys[e.key] = false;
     }
@@ -110,9 +126,12 @@ function start() {
         if (keys["ArrowRight"] && racket.x < 720) {
             racket.x += 10;
         }
+        if (keys[" "]) {
+            skott1.shot = true;
+        }
     }
 
-    /* Innan spevar börjar */
+    /* Innan spelet börjar */
     reset();
 
     /* Animationsloopen */
@@ -121,8 +140,12 @@ function start() {
         ctx.clearRect(0, 0, 800, 600);
 
         uppdateraAllaKlossar();
+
+        ritaRacket();
         uppdateraRacket();
-        ritaRacket(racket.x, racket.y);
+
+        skott1.rita();
+        skott1.uppdatera();
 
         requestAnimationFrame(gameLoop);
     }

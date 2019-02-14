@@ -41,7 +41,6 @@ function start() {
         ctx.arc(x, y, 20, 0, Math.PI * 2, false);
         ctx.fillStyle = "yellow";
         ctx.fill();
-        ctx.rect(100, 170, 300, 50);
         ctx.closePath();
     }
 
