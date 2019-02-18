@@ -8,11 +8,6 @@ function start() {
     var keys = [];
     var klossar = [];
 
-    racket = {
-        x: 0,
-        y: 0
-    }
-
     /* Mall för skott */
     class Skott {
         constructor() {
@@ -35,16 +30,41 @@ function start() {
                 if (this.y < 0) {
                     this.shot = false;
                 }
-            } else {
-                this.x = racket.x + 35;
-                this.y = racket.y;
             }
         }
         kollision() {
 
         }
     }
-    var skott1 = new Skott();
+    var skott = new Skott();
+
+    class Racket {
+        constructor() {
+            this.x = 0;
+            this.y = 0;
+        }
+        rita() {
+            ctx.beginPath();
+            ctx.rect(this.x, this.y, 70, 10);
+            ctx.fillStyle = "#FFF";
+            ctx.fill();
+            ctx.closePath();
+        }
+        uppdatera() {
+            if (keys["ArrowLeft"] && this.x > 10) {
+                this.x -= 10;
+            }
+            if (keys["ArrowRight"] && this.x < 720) {
+                this.x += 10;
+            }
+            if (keys[" "] && !skott.shot) {
+                skott.x = this.x + 35;
+                skott.y = this.y;
+                skott.shot = true; 
+            }
+        }
+    }
+    var racket = new Racket();
 
     /* Ge variabler starvärden */
     function reset() {
@@ -55,15 +75,6 @@ function start() {
 
         antalKlossar = 0;
         skapaAllaKlossar();
-    }
-
-    /* Racket */
-    function ritaRacket() {
-        ctx.beginPath();
-        ctx.rect(racket.x, racket.y, 70, 10);
-        ctx.fillStyle = "#FFF";
-        ctx.fill();
-        ctx.closePath();
     }
 
     /* Kloss */
@@ -113,22 +124,8 @@ function start() {
     function tryckPil(e) {
         keys[e.key] = true;
     }
-
     function slappPil(e) {
         keys[e.key] = false;
-    }
-
-    /* Flytta racketen */
-    function uppdateraRacket() {
-        if (keys["ArrowLeft"] && racket.x > 10) {
-            racket.x -= 10;
-        }
-        if (keys["ArrowRight"] && racket.x < 720) {
-            racket.x += 10;
-        }
-        if (keys[" "]) {
-            skott1.shot = true;
-        }
     }
 
     /* Innan spelet börjar */
@@ -141,11 +138,12 @@ function start() {
 
         uppdateraAllaKlossar();
 
-        ritaRacket();
-        uppdateraRacket();
+        racket.rita();
+        racket.uppdatera();
 
-        skott1.rita();
-        skott1.uppdatera();
+        /* Skjuter av alla skott */
+        skott.rita();
+        skott.uppdatera();
 
         requestAnimationFrame(gameLoop);
     }
