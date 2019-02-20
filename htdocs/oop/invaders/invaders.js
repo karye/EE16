@@ -3,10 +3,7 @@ window.onload = start;
 function start() {
     const canvas = document.querySelector("#myCanvas");
     var ctx = canvas.getContext("2d");
-
-    var antalKlossar;
     var keys = [];
-    var klossar = [];
 
     /* Mall för skott */
     class Skott {
@@ -30,10 +27,12 @@ function start() {
                 if (this.y < 0) {
                     this.shot = false;
                 }
+                this.rita();
             }
-        }
-        kollision() {
-
+            if (this.hit) {
+                this.shot = false;
+                this.hit = false;
+            }
         }
     }
     var skott = new Skott();
@@ -52,69 +51,79 @@ function start() {
         }
         uppdatera() {
             if (keys["ArrowLeft"] && this.x > 10) {
-                this.x -= 10;
+                this.x -= 5;
             }
             if (keys["ArrowRight"] && this.x < 720) {
-                this.x += 10;
+                this.x += 5;
             }
             if (keys[" "] && !skott.shot) {
                 skott.x = this.x + 35;
                 skott.y = this.y;
-                skott.shot = true; 
+                skott.shot = true;
             }
+            this.rita();
         }
     }
     var racket = new Racket();
 
-    /* Ge variabler starvärden */
-    function reset() {
-
-        /* Racketens position */
-        racket.x = 400;
-        racket.y = 580;
-
-        antalKlossar = 0;
-        skapaAllaKlossar();
-    }
-
-    /* Kloss */
-    function ritaKloss(x, y) {
-        ctx.beginPath();
-        ctx.rect(x, y, 100, 30);
-        ctx.fillStyle = "#FFF";
-        ctx.fill();
-        ctx.closePath();
-    }
-
-    /* Skapa en array för alla klossar */
-    function skapaAllaKlossar() {
-        /* Skapa rader */
-        for (var j = 1; j < 5; j++) {
-            klossar[j] = [];
-            /* Skapa klossar */
-            for (var i = 0; i < 6; i++) {
-                klossar[j][i] = {
-                    x: 40 + i * 120,
-                    y: j * 50,
-                    hit: false
-                };
-                antalKlossar++;
+    class Klossar {
+        constructor() {
+            this.x = 0;
+            this.y = 0;
+            this.antal = 0;
+            this.lager = [];
+        }
+        rita(x, y) {
+            ctx.beginPath();
+            ctx.rect(x, y, 100, 30);
+            ctx.fillStyle = "#FFF";
+            ctx.fill();
+            ctx.closePath();
+        }
+        /* Skapa en array för alla klossar */
+        skapaAlla() {
+            /* Skapa rader */
+            for (var j = 1; j < 5; j++) {
+                this.lager[j] = [];
+                /* Skapa klossar */
+                for (var i = 0; i < 6; i++) {
+                    this.lager[j][i] = {
+                        x: 40 + i * 120,
+                        y: j * 50,
+                        hit: false
+                    };
+                    this.antal++;
+                }
             }
         }
-    }
-
-    /* Rita ut klossar som finns i arrayen */
-    function uppdateraAllaKlossar() {
-        /* Skapa rader */
-        for (var j = 1; j < 5; j++) {
-            /* Skapa klossar */
-            for (var i = 0; i < 6; i++) {
-                if (!klossar[j][i].hit) {
-                    ritaKloss(40 + i * 120, j * 50);
+        /* Rita ut klossar som finns i arrayen */
+        uppdatera() {
+            for (var j = 1; j < 5; j++) {
+                for (var i = 0; i < 6; i++) {
+                    if (!this.lager[j][i].hit) {
+                        this.rita(40 + i * 120, j * 50);
+                    }
+                }
+            }
+        }
+        kollision(skott) {
+            for (var j = 1; j < 5; j++) {
+                for (var i = 0; i < 6; i++) {
+                    if (!this.lager[j][i].hit) {
+                        if ((skott.x >= this.lager[j][i].x && 
+                            skott.x <= this.lager[j][i].x + 100) && 
+                            (skott.y >= this.lager[j][i].y && 
+                            skott.y <= this.lager[j][i].y + 30)) {
+                                this.lager[j][i].hit = true;
+                                skott.hit = true;
+                                this.antal--;
+                        }
+                    }
                 }
             }
         }
     }
+    var klossar = new Klossar();
 
     /* Lyssna på piltantagenterna */
     document.addEventListener("keydown", tryckPil);
@@ -124,11 +133,25 @@ function start() {
     function tryckPil(e) {
         keys[e.key] = true;
     }
+
     function slappPil(e) {
         keys[e.key] = false;
     }
 
     /* Innan spelet börjar */
+    /* Ge variabler starvärden */
+    function reset() {
+
+        /* Racketens position */
+        racket.x = 400;
+        racket.y = 580;
+
+        /* Nollställ och rita upp alla klossar */
+        klossar.antal = 0;
+        klossar.skapaAlla();
+    }
+
+    /* Nollställ inför första spelet */
     reset();
 
     /* Animationsloopen */
@@ -136,14 +159,16 @@ function start() {
         /* Sudda bort allt */
         ctx.clearRect(0, 0, 800, 600);
 
-        uppdateraAllaKlossar();
-
-        racket.rita();
         racket.uppdatera();
-
-        /* Skjuter av alla skott */
-        skott.rita();
         skott.uppdatera();
+
+        klossar.uppdatera();
+        klossar.kollision(skott);
+
+        if (klossar.antal == 0) {
+            alert("Du vinner!");
+            reset();
+        }
 
         requestAnimationFrame(gameLoop);
     }
