@@ -1,3 +1,9 @@
+/* 
+Från tutorial: https://html5.litten.com/make-a-maze-game-on-an-html5-canvas/
+Maze-bild från: http://hereandabove.com/maze/mazeorig.form.html
+Alternativ: https://codepen.io/GabbeV/pen/viAec
+*/
+
 window.onload = start;
 
 function start() {
@@ -6,10 +12,10 @@ function start() {
     canvas.height = window.innerHeight;
     var ctx = canvas.getContext("2d");
 
-    var imgRaket = new Image();
-    imgRaket.src = "./bilder/pacman.png";
+    var imgPlayer = new Image();
+    imgPlayer.src = "./bilder/pacman.png";
     var imgMaze = new Image();
-    imgMaze.src = "./bilder/maze.png";
+    imgMaze.src = "./bilder/maze2.png";
 
     var player = {
         x: 4,
@@ -17,7 +23,7 @@ function start() {
     }
 
     function drawPlayer() {
-        ctx.drawImage(imgMaze, player.x, player.y, 5, 5);
+        ctx.drawImage(imgPlayer, player.x, player.y, 15, 15);
     }
 
     function drawMaze() {
@@ -25,7 +31,7 @@ function start() {
     }
 
     function checkCollision(x, y) {
-        var imgData = ctx.getImageData(x, y, 5, 5);
+        var imgData = ctx.getImageData(x, y, 15, 15);
         var pixels = imgData.data;
 
         console.log(x + " " + y);
@@ -47,17 +53,17 @@ function start() {
 
     /* Flytta player */
     function uppdatePlayer(e) {
-        if (e.key == "ArrowLeft" && checkCollision(player.x - 5, player.y)) {
-            player.x -= 5;
+        if (e.key == "ArrowLeft" && checkCollision(player.x - 15, player.y)) {
+            player.x -= 15;
         }
-        if (e.key == "ArrowRight" && checkCollision(player.x + 5, player.y)) {
-            player.x += 5;
+        if (e.key == "ArrowRight" && checkCollision(player.x + 15, player.y)) {
+            player.x += 15;
         }
-        if (e.key == "ArrowUp" && checkCollision(player.x, player.y - 5)) {
-            player.y -= 5;
+        if (e.key == "ArrowUp" && checkCollision(player.x, player.y - 15)) {
+            player.y -= 15;
         }
-        if (e.key == "ArrowDown" && checkCollision(player.x, player.y + 5)) {
-            player.y += 5;
+        if (e.key == "ArrowDown" && checkCollision(player.x, player.y + 15)) {
+            player.y += 15;
         }
     }
 
