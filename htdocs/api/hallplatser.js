@@ -1,17 +1,23 @@
 window.onload = start;
 
 function start() {
+    /* Skolans position */
+    var lat = 59.336885;
+    var lon = 18.048323;
 
     mapboxgl.accessToken = 'pk.eyJ1Ijoia2FyeWUiLCJhIjoiY2pwOXRtbWc1MGdmNjNwc2JmdGxzeDR5byJ9.whp8f2Ttws57ctAf_stuag';
     var map = new mapboxgl.Map({
         container: 'map', // container id
         style: 'mapbox://styles/mapbox/streets-v9', // stylesheet location
-        center: [18.07, 59.33], // starting position [lng, lat]
-        zoom: 10 // starting zoom
+        center: [lon, lat], // starting position [lng, lat]
+        zoom: 14 // starting zoom
     });
 
-    var marker = new mapboxgl.Marker()
-        .setLngLat([18.1, 59.33])
+    /* Skapa en special markerikon för hem */
+    var nti = document.createElement('div');
+    nti.className = 'marker';
+    var marker = new mapboxgl.Marker(nti)
+        .setLngLat([lon, lat])
         .addTo(map);
 
     if (navigator.geolocation) {
@@ -21,9 +27,46 @@ function start() {
     }
 
     function showLocation(position) {
-        var lat = position.coords.latitude;
-        var lon = position.coords.longitude;
-        console.log("Din position är: " + lat + ", " + lon);
+        /*         var lat = position.coords.latitude;
+                var lon = position.coords.longitude;
+                console.log("Din position är: " + lat + ", " + lon); */
 
+        /* Omvandla data till post-data */
+        var postData = new FormData();
+        postData.append("lat", lat);
+        postData.append("lon", lon);
+
+        /* Skicka data till ett php-skript */
+        var ajax = new XMLHttpRequest();
+        ajax.open("POST", "hallplatser.php", true);
+        ajax.send(postData);
+
+        ajax.addEventListener("loadend", fetchStops);
+
+        function fetchStops() {
+            /* Tar emot datat från php-skriptet */
+            var stopsJson = this.responseText;
+            //console.log(stopsJson);
+
+            /* Kodar av json-formatet */
+            var stops = JSON.parse(stopsJson);
+
+            /* Loppa igenom alla hållplatser */
+            stops.forEach(stop => {
+                console.log("Hållplats: ", stop[0], stop[1], stop[2]);
+
+                /* Skapa en popup med gatuadressen */
+                var popup = new mapboxgl.Popup({
+                        offset: 25
+                    })
+                    .setText(stop[0]);
+
+                /* Infoga en marker på kartan för varje hållpats */
+                var marker = new mapboxgl.Marker()
+                    .setLngLat([stop[2], stop[1]])
+                    .setPopup(popup)
+                    .addTo(map);
+            });
+        }
     }
 }

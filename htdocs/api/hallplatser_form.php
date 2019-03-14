@@ -9,6 +9,22 @@
 * @link
 * API-dok     https://www.trafiklab.se/api/sl-narliggande-hallplatser/dokumentation
 */
+?>
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Närmaste hållplatser</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <form action="#" method="post">
+        <label>Ange latitude</label><input type="text" name="lat">
+        <label>Ange longitude</label><input type="text" name="lon">
+        <button>Sök</button>
+    </form>
+    <?php
 
 if (isset($_POST["lat"]) && isset($_POST["lon"])) {
     $lat = filter_input(INPUT_POST, "lat", FILTER_SANITIZE_STRING);
@@ -32,17 +48,18 @@ if (isset($_POST["lat"]) && isset($_POST["lon"])) {
     
     /* Leta rätt på data vi är intresserade av */
     $stopLocation = $jsonData->LocationList->StopLocation;
+    print_r($stopLocation);
 
     /* Loopa igenom alla hållplatser en-och-en */
-    $stops = [];
     foreach ($stopLocation as $stop) {
         $name = $stop->name;
         $lat = $stop->lat;
         $lon = $stop->lon;
-        $stops[] = [urlencode($name), $lat, $lon];
+        echo "<p>$name: $lat, $lon</p>";
     }
-    echo json_encode($stops);
 } else {
-    echo "Något blev fel!";
+    echo "<p>Något blev fel!</p>";
 }
 ?>
+</body>
+</html>
