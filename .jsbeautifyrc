@@ -4,7 +4,13 @@
         "newline_between_rules": false
     },
     "html": {
-        "extra_liners": "",
-        "content_unformatted": "pre, textarea, php"
+        "extra_liners": [
+            ""
+        ],
+        "content_unformatted": [
+            "pre",
+            "textarea",
+            "html"
+        ]
     }
 }
