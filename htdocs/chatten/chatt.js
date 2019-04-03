@@ -18,5 +18,4 @@ function start() {
         ajax.open("POST", "read.php", true);
         ajax.send();
     }
-    
 }

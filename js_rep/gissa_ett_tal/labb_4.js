@@ -1,7 +1,7 @@
+/* Kör när sidan laddat klart */
 window.onload = start;
 
-/* Koden som körs från start */
 function start() {
 
-    
+
 }
