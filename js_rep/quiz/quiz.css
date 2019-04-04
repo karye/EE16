@@ -1,0 +1,18 @@
+body {
+    background: #8d8d8d;
+    background-size: 2000px;
+    font-family: sans-serif;
+}
+.kontainer {
+    width: 500px;
+    padding: 20px;
+    margin: 50px auto;
+    background: rgb(245, 231, 170);
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px;
+}
+
+input, button {
+    padding: 10px;
+    border-radius: 3px;
+}
