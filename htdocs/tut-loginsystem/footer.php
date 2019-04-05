@@ -8,6 +8,8 @@
 * @license    PHP CC
 */
 ?>
+<footer>
+</footer>
 
 </body>
 </html>
