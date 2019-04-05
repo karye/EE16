@@ -18,5 +18,15 @@
 </head>
 <body>
     <header>
-    
+        <nav>
+        <a href="#"><img src="./img/logo.png" alt="logo"></a>
+        <ul>
+            <li>
+                <a href="">Home</a>
+                <a href="">Portfolio</a>
+                <a href="">About me</a>
+                <a href="">Contact</a>
+            </li>
+        </ul>
+        </nav>
     </header>
