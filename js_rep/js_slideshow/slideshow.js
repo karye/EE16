@@ -27,11 +27,11 @@ function start() {
 
     /* Gå till nästa bild */
     function bildFram() {
-        
+
     }
 
     /* Gå tillbaka till föregående bild */
     function bildBak() {
-        
+
     }
 }

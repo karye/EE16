@@ -1,5 +1,5 @@
 <?php
-include_once("../../admin/konfig_db.php");
+include_once "../../admin/konfig_db.php";
 
 session_start();
 ?>
@@ -13,39 +13,39 @@ session_start();
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<?php
+    <?php
 /* Kontrollera att data finns innan vi läser av data */
-    if (isset($_POST["fnamn"]) && isset($_POST["enamn"]) && isset($_POST["epost"])) {
-        /* Läs av data */
-        $fnamn = filter_input(INPUT_POST, "fnamn", FILTER_SANITIZE_STRING);
-        $enamn = filter_input(INPUT_POST, "enamn", FILTER_SANITIZE_STRING);
-        $epost = filter_input(INPUT_POST, "epost", FILTER_SANITIZE_STRING);
+if (isset($_POST["fnamn"]) && isset($_POST["enamn"]) && isset($_POST["epost"])) {
+    /* Läs av data */
+    $fnamn = filter_input(INPUT_POST, "fnamn", FILTER_SANITIZE_STRING);
+    $enamn = filter_input(INPUT_POST, "enamn", FILTER_SANITIZE_STRING);
+    $epost = filter_input(INPUT_POST, "epost", FILTER_SANITIZE_STRING);
 
-        /* Logga in på databasen, och skapa en anslutning */
-        $conn = new mysqli($hostname, $user, $password, $databas);
+    /* Logga in på databasen, och skapa en anslutning */
+    $conn = new mysqli($hostname, $user, $password, $databas);
 
-        /* Fungerade anslutningen? */
-        if ($conn->connect_error) {
-            die("Kunde inte ansluta till databasen: " . $conn->connect_error);
-        } else {
-            /* echo "<p>Anslutningen lyckades!</p>"; */
-        }
+    /* Fungerade anslutningen? */
+    if ($conn->connect_error) {
+        die("Kunde inte ansluta till databasen: " . $conn->connect_error);
+    } else {
+        /* echo "<p>Anslutningen lyckades!</p>"; */
+    }
 
-        /* Lagra data i tabellen */
-        /* Skapa sql-frågan vi skall köra */
-        $sql = "INSERT INTO personer (fnamn, enamn, epost) VALUES ('$fnamn', '$enamn', '$epost');";
-        $result = $conn->query($sql);
+    /* Lagra data i tabellen */
+    /* Skapa sql-frågan vi skall köra */
+    $sql = "INSERT INTO personer (fnamn, enamn, epost) VALUES ('$fnamn', '$enamn', '$epost');";
+    $result = $conn->query($sql);
 
-        /* Gick det bra? Kunde SQL-satsen köras? */
-        if (!$result) {
-            die("Det blev fel med SQL-satsen.");
-        } else {
-            echo "<p>Personen är registrerad!</p>";
-        }
+    /* Gick det bra? Kunde SQL-satsen köras? */
+    if (!$result) {
+        die("Det blev fel med SQL-satsen.");
+    } else {
+        echo "<p>Personen är registrerad!</p>";
+    }
 
-        /* Stänger ned anslutningen */
-        $conn->close();
-    }    
+    /* Stänger ned anslutningen */
+    $conn->close();
+}
 ?>
     <div class="kontainer">
         <h3>Registrera person</h3>

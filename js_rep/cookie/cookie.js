@@ -6,7 +6,7 @@ window.onload = start;
 /* Start-delen */
 function start() {
 
-	/* Välj ut alla elementen att jobba med: target */
+    /* Välj ut alla elementen att jobba med: target */
 
     /* Knapp 1: skriv ut en cookie i loggen */
 
