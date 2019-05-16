@@ -18,13 +18,12 @@
 </head>
 <body>
     <div class="kontainer">
-        <h2>Bildgalleri</h2>
+        <h2>Album</h2>
         <?php
         /* https://devdocs.io/php/function.scandir */
 
-        /* Visa alla bilder som ett galleri */
+        /* Visa alla album som länkar */
 
-        /* Bara visa bilder: https://devdocs.io/php/function.in-array */
         ?>
     </div>
 </body>

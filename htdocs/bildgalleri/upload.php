@@ -31,7 +31,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST"){
     print_r($_FILES["files"]["name"]);
     print_r($_FILES["files"]["tmp_name"]);
 
-    /* https://devdocs.io/php/function.move-uploaded-file  */
+    /* Unikt bildnamn: https://devdocs.io/php/function.uniqid */
+
+    /* Skapa dagens album som underkatalog med formatet 160519 */
+
+    /* Ladda upp bilder: https://devdocs.io/php/function.move-uploaded-file  */
 
     /* Visa alla bilder som miniatyrer */
 }
