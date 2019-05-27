@@ -1,3 +1,13 @@
+<?php
+/*
+* PHP version 7
+* @category   Lånekalkylator
+* @author     Karim Ryde <karye.webb@gmail.com>
+* @license    PHP CC
+*
+* @todo Hämtar direkt med php utan ajax/js
+*/
+?>
 <!DOCTYPE html>
 <html lang="sv">
 <head>
