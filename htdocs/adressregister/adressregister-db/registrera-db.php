@@ -59,7 +59,11 @@ if (isset($_POST["fnamn"]) && isset($_POST["enamn"]) && isset($_POST["epost"])) 
             <nav>
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
+                    <?php if (!isset($_SESSION['anamn'])) { ?>
                         <a class="nav-link" href="logga-in-db.php">Logga in</a>
+                        <?php } else { ?>
+                        <a class="nav-link" href="logga-ut-db.php">Logga ut</a>
+                        <?php } ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link active" href="registrera-db.php">Registrera</a>

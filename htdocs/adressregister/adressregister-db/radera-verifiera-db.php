@@ -2,6 +2,10 @@
 include_once("../../../admin/konfig_db.php");
 
 session_start();
+if (!isset($_SESSION['anamn'])) {
+    header('Location: logga-in-db.php');
+    exit;
+}
 ?>
 
 <!DOCTYPE html>

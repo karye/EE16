@@ -3,7 +3,6 @@ include_once("../../../admin/konfig_db.php");
 
 session_start();
 ?>
-
 <!DOCTYPE html>
 <html lang="sv">
 <head>
@@ -21,7 +20,11 @@ session_start();
             <nav>
                 <ul class="nav nav-tabs">
                     <li class="nav-item">
+                        <?php if (!isset($_SESSION['anamn'])) { ?>
                         <a class="nav-link active" href="logga-in-db.php">Logga in</a>
+                        <?php } else { ?>
+                        <a class="nav-link active" href="logga-ut-db.php">Logga ut</a>
+                        <?php } ?>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="lista-db.php">Lista</a>
@@ -61,7 +64,7 @@ session_start();
                 $_SESSION['anamn'] = $anamn;
                 header('Location: registrera-db.php');
             } else {
-                 echo "Felaktigt lösenord";
+                 echo "<p class=\"alert alert-dismissible alert-warning\">Felaktigt lösenord</p>";
             }
         }
     
