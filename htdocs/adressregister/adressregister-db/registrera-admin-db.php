@@ -16,9 +16,9 @@ session_start();
     <div class="kontainer">
         <h3>Inloggning</h3>
         <nav>
-            <a href="logga_in_db.php">Logga in</a>
-            <a href="registrera_db.php">Registrera</a>
-            <a href="lista_db.php">Lista</a>
+            <a href="logga-in-db.php">Logga in</a>
+            <a href="registrera-db.php">Registrera</a>
+            <a href="lista-db.php">Lista</a>
         </nav>
         <?php
 /* Kontrollera att POST-variablerna finns, dvs första gången. */
@@ -38,20 +38,18 @@ if (isset($_POST['anamn']) && isset($_POST['losen'])) {
         /* echo "<p>Anslutningen lyckades!</p>"; */
     }
 
+    /* Skapa ett hash från lösenordet */
+    $hash = password_hash($losen, PASSWORD_DEFAULT);
+
     /* Skapa sql-frågan vi skall köra */
-    $sql = "SELECT * FROM admin WHERE anamn = '$anamn';";
+    $sql = "INSERT INTO admin (anamn, hash) VALUES ('$anamn', '$hash');";
     $result = $conn->query($sql);
 
     /* Gick det bra? Kunde SQL-satsen köras? */
     if (!$result) {
         die("Det blev fel med SQL-satsen.");
     } else {
-        $rad = $result->fetch_assoc();
-        if (password_verify($losen, $rad['hash'])) {
-            echo "Ditt lösenord stämmer!";
-        } else {
-             echo "Felaktigt lösenord";
-        }
+        echo "<p>Admin registrerad!</p>";
     }
 
     /* Stänger ned anslutningen */
@@ -61,7 +59,7 @@ if (isset($_POST['anamn']) && isset($_POST['losen'])) {
         <form action="#" method="post">
             <label>Användarnamn</label><input type="text" name="anamn">
             <label>Lösenord</label><input type="password" name="losen">
-            <button>Logga in</button>
+            <button>Registrera</button>
         </form>
     </div>
 </body>
