@@ -5,16 +5,19 @@ body {
 }
 .kontainer {
     background: rgb(231, 231, 231);
-    padding: 30px;
+    padding: 50px;
     width: 500px;
-    margin: 20px auto;
+    margin: 100px auto;
     box-shadow: 2px 2px 5px;
     border-radius: 5px;
+    font-family: sans-serif;
+}
+header {
     font-family: 'Bevan', cursive;
 }
 form {
     display: grid;
-    grid-template-columns: 100px 200px;
+    grid-template-columns: 1fr 2fr;
 }
 label {
     align-self: center;

@@ -8,9 +8,11 @@
 </head>
 <body>
     <div class="kontainer">
-        <h1>Valutaomvandlare</h1>
+        <header>
+            <h1>Valutaomvandlare</h1>
+        </header>
         <form>
-            <label for="belopp">Belopp</label>
+            <label for="belopp">Belopp i Dollar</label>
             <input id="belopp" type="text">
             <label for="valuta">Valuta</label>
             <select id="valuta">
@@ -28,6 +30,9 @@
             <label for="resultat">Resultat</label>
             <input id="resultat" type="text">
         </form>
+        <footer>
+            <p>Valuta i realtid från https://openexchangerates.org</p>
+        </footer>
     </div>
     <script src="./valuta.js"></script>
 </body>
