@@ -5,7 +5,7 @@
 * @author     Karim Ryde <karye.webb@gmail.com>
 * @license    PHP CC
 *
-* @todo Hämtar direkt med php utan ajax/js
+* TODO Hämtar direkt med php utan ajax/js
 */
 ?>
 <!DOCTYPE html>
