@@ -23,7 +23,7 @@
         fwrite($handtag, "$fnamn $enamn $epost" . PHP_EOL);
         /* Stäng textfilen */
         fclose($handtag);
-    }    
+    }
 ?>
     <div class="kontainer">
     <header>

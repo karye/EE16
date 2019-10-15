@@ -16,7 +16,7 @@
         $sidan = file_get_contents($url);
     
         /* Leta rätt på början av horoskopet med strpos*/
-        $start = strpos($sidan, "Väduren");
+        $start = strpos($sidan, "<div class=\"o-indenter\">");
     
         /* Leta rätt på slutet av horoskopet med strpos */
         $slut = strpos($sidan, "post-pagelink");
