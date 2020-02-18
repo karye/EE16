@@ -1,3 +1,4 @@
 {
-    "todo-tree.showTagsFromOpenFilesOnly": false
+    "todo-tree.showTagsFromOpenFilesOnly": false,
+    "todo-tree.tree.showTagsFromOpenFilesOnly": false
 }
