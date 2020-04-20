@@ -1,58 +1,35 @@
-/* Enkel CSS-reset */
-html {
-    box-sizing: border-box;
-}
-*, *:before, *:after {
-    box-sizing: inherit;
-}
-body, h1, h2, h3, h4, h5, h6, p, ul {
-    margin: 0;
-    padding: 0;
-}
+@import url('https://fonts.googleapis.com/css?family=Libre+Baskerville&display=swap');
 
 body {
-    background: #9db4b2;
+    background: #9db4b2 url("./bilder/samuel-ramos-1319769-unsplash.jpg");
 }
 .kontainer {
     background: #fff;
-    width: 600px;
-    margin: 100px auto;
+    width: 800px;
+    margin: 1rem auto;
     padding: 30px;
     border-radius: 10px;
-    font-family: sans-serif;
+    font-family: 'Libre Baskerville', serif;
 }
-form {
-    display: grid;
-    grid-template-columns: auto auto;
-    grid-gap: 20px;
+header {
+    padding: 3rem;
 }
-label, input, button {
-    padding: 10px;
-    border: 1p solid #888;
-    border-radius: 3px;
+h1 {
+    text-align: center;
+    margin-bottom: 3rem;
 }
-label {
-    text-align: right;
+main {
+    padding: 2rem;
 }
-table {
-    width: 100%;
-    border-collapse: collapse;
-    border: 1px solid #DDD;
-    margin: 10px 0;
+form.jumbotron {
+    padding: 2rem;
 }
-th, td {
-    padding: 5px;
-    text-align: left;
-}
-tr:nth-child(even) {
-    background: #CCC;
-}
-tr:nth-child(odd) {
-    background: #FFF;
+label{
+    margin-top: 2rem;
 }
 button {
-    cursor: pointer;
+    margin-top: 4rem;
 }
-button:hover {
-    background: #ffffff;
+.table td {
+    vertical-align: middle;
 }

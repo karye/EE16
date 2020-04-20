@@ -49,7 +49,7 @@ if (isset($_POST["lat"]) && isset($_POST["lon"])) {
     /* Leta rätt på data vi är intresserade av */
     $stopLocation = $jsonData->LocationList->StopLocation;
     print_r($stopLocation);
-
+    
     /* Loopa igenom alla hållplatser en-och-en */
     foreach ($stopLocation as $stop) {
         $name = $stop->name;
@@ -62,4 +62,5 @@ if (isset($_POST["lat"]) && isset($_POST["lon"])) {
 }
 ?>
 </body>
+
 </html>

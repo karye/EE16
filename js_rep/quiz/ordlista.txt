@@ -1,0 +1,10 @@
+"Fun", "Kul",
+"Correct", "Korrekt",
+"Easy", "Lätt",
+"Hungry", "Hungrig",
+"Fast", "Fort",
+"Car", "Bil",
+"Library", "Bibliotek",
+"Cat", "Katt",
+"Plane", "Flygplan",
+"Holiday", "Semester"

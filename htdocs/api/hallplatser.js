@@ -57,8 +57,8 @@ function start() {
 
                 /* Skapa en popup med gatuadressen */
                 var popup = new mapboxgl.Popup({
-                        offset: 25
-                    })
+                    offset: 25
+                })
                     .setText(stop[0]);
 
                 /* Infoga en marker på kartan för varje hållpats */

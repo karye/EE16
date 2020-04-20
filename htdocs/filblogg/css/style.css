@@ -1,18 +1,26 @@
+@import url('https://fonts.googleapis.com/css?family=Fredoka+One&display=swap');
+
 body {
     background: rgb(255, 255, 255) url("../bilder/bg.jpg");
     background-size: cover;
 }
 
 .kontainer {
-    background: rgb(214, 214, 214);
+    background: #FFF;
     width: 800px;
     margin: 50px auto;
-    padding: 20px;
+    padding: 40px;
     border-radius: 10px;
     box-shadow: 2px 2px 5px;
 }
-.navbar {
-    padding: 0;
+header {
+    margin-bottom: 40px;
+}
+h1 {
+    font-family: 'Fredoka One', cursive;
+}
+nav {
+    margin: 10px 0;
 }
 main p {
     background: #ffffff;

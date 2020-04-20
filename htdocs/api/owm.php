@@ -17,9 +17,10 @@
 <body>
     <?php
         $api = "22ee1d58f7adae08ee71fa7c0bd24481";
-        $json = file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=Tokyo&APPID=$api&units=metric");
+        $stad = "Tokyo";
+        $json = file_get_contents("https://api.openweathermap.org/data/2.5/weather?q=$stad&APPID=$api&units=metric");
 
-        print_r($json);
+        //print_r($json);
 
         /* Avkoda json */
         $jsonData = json_decode($json);
@@ -36,7 +37,7 @@
         $ikon = $jsonData->weather[0]->icon . ".png";
         print_r($ikon);
 
-        echo "<p>Tokyo ligger på latitude $lat och longitude $lon.</p>";
+        echo "<p>$stad ligger på latitude $lat och longitude $lon.</p>";
         echo "<p>Temperaturen just nu är $temp&deg; C.</p>";
         echo "<img src=\"https://openweathermap.org/img/w/$ikon\" alt=\"väderbild\">";
 

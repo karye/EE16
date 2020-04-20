@@ -4,16 +4,18 @@
     <meta charset='utf-8' />
     <title>Display a map</title>
     <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
-    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.js'></script>
-    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.51.0/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.js'></script>
+    <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.53.1/mapbox-gl.css' rel='stylesheet' />
     <link rel="stylesheet" href="mapbox.css">
 </head>
 <body>
-    <div id='map'></div>
-    <form class="box" action="save.php" method="POST">
-        <textarea class="coordinates"></textarea>
-        <button>Spara</button>
-    </form>
+    <div class="kontainer">
+        <div id="map"></div>
+        <form class="box" action="save.php" method="POST">
+            <textarea class="coordinates"></textarea>
+            <button>Spara</button>
+        </form>
+    </div>
     <script src="mapbox3.js"></script>
 </body>
 </html>
