@@ -1,5 +1,5 @@
 <?php
-include_once("../../admin/konfig_db.php");
+include_once $_SERVER["DOCUMENT_ROOT"] . "/_databaser/konfig-db.php";
 
 session_start();
 if (!isset($_SESSION['anamn'])) {
